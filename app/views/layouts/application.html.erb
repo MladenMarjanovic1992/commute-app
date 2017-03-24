@@ -26,13 +26,25 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to 'Sign up', new_user_registration_path %></li>
               <li><a href="#">Sign in</a></li>
-              <li><a href="#">Sign up</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
     </header>
-    <%= yield %>
+    <div class="row">
+      <div class="col-md-12">
+        <% flash.each do |key, msg| %>
+          <div class="text-center alert
+                      alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+            <%= msg %>
+          
+          </div>
+        <% end %>
+      </div>
+      <%= yield %>
+      
+    </div>
   </body>
 </html>
