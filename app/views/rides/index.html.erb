@@ -1,2 +1,26 @@
-<h1>Rides#index</h1>
-<p>Find me in app/views/rides/index.html.erb</p>
+<div>
+  <div class="container">
+    <% @rides.each do |ride| %>
+      <%= link_to user_ride_path(ride.user, ride) do %>
+        <div class="row" id="listed-rides">
+          <div class="col-sm-3">
+              <%= ride.user.email %>
+              <h1>Picture!</h1>
+              <p>car name</p>
+          </div>
+          <div class="col-sm-7">
+            <ul>
+              <li>From: <%= ride.from %></li>
+              <li>To: <%= ride.to %></li>
+              <li>Ride date: <%= ride.ride_date %></li>
+              <li>Ride time: <%= ride.just_time %></li>
+              <li>Seats: <%= ride.seats %></li>
+              <li>Price: <%= ride.price %></li>
+              <li>Details: <%= ride.details %></li>
+            </ul>
+          </div>  
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

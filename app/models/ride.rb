@@ -7,5 +7,10 @@ class Ride < ApplicationRecord
   validates :ride_date, presence: true
   validates :ride_time, presence: true
   validates :details, presence: true
+  validates :price, presence: true, numericality: {greater_than_or_equal_to: 0, only_integer: true}
+  
+  def just_time
+    self.ride_time.to_s[11..15] + " h"
+  end
 
 end

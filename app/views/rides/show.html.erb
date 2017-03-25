@@ -1,2 +1,33 @@
-<h1>Rides#show</h1>
-<p>Find me in app/views/rides/show.html.erb</p>
+<div>
+  <header>
+    <h1 class="text-center"><%= @ride.user.email %>'s ride</h1>
+  </header>
+  </br>
+  </br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <%= @ride.user.email %>
+        <h1>Picture!</h1>
+        <h1>car name!</h1>
+        <h1>Picture!</h1>
+      </div>  
+      <div class="col-md-7">
+        <ul>
+          <li>From: <%= @ride.from %></li>
+          <li>To: <%= @ride.to %></li>
+          <li>Ride date: <%= @ride.ride_date %></li>
+          <li>Ride time: <%= @ride.just_time %></li>
+          <li>Seats: <%= @ride.seats %></li>
+          <li>Price: <%= @ride.price %></li>
+          <li>Details: <%= @ride.details %></li>
+        </ul>
+      </div>  
+    </div>
+  </div>
+  
+</div>
+
+
+

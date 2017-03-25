@@ -1,12 +1,13 @@
 class RidesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :find_ride, only: [:show, :edit, :update, :destroy]
+  before_action :find_ride, only: [:edit, :update, :destroy]
   
   def index
+    @rides = Ride.all
   end
 
   def show
-  
+    @ride = Ride.find(params[:id])
   end
   
   def new
@@ -41,7 +42,7 @@ class RidesController < ApplicationController
     end
     
     def ride_params
-      params.require(:ride).permit(:from, :to, :seats, :ride_date, :ride_time, :details)
+      params.require(:ride).permit(:from, :to, :seats, :ride_date, :ride_time, :details, :price)
     end
     
 end

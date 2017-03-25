@@ -16,6 +16,7 @@ RSpec.feature "Create a ride" do
     fill_in "Ride Date", with: "2017-06-01"
     fill_in "Ride time", with: "12:00"
     fill_in "Seats", with: "3"
+    fill_in "Price", with: "1000"
     fill_in "Ride details", with: "I can pick you up at Sava centar or near the Arena."
     
     click_button "Finish"
@@ -38,6 +39,7 @@ RSpec.feature "Create a ride" do
     fill_in "Ride Date", with: ""
     fill_in "Ride time", with: ""
     fill_in "Seats", with: ""
+    fill_in "Price", with: ""
     fill_in "Ride details", with: ""
     
     click_button "Finish"

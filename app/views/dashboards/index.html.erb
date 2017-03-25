@@ -17,6 +17,7 @@
         <% if user_signed_in? %>
           <%= link_to "Share your ride!", new_user_ride_path(current_user), class: "btn btn-lg btn-default" %>
         <% end %>
+        <%= link_to "Find a ride!", rides_index_path, class: "btn btn-lg btn-default" %>
       </div>
     </div>
   </div>
