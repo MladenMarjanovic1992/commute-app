@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  $("#ride-date").datepicker({ dateFormat: "yy-mm-dd" });
+  $("#ride_ride_date").datepicker({ dateFormat: "yy-mm-dd" });
 })
