@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <header>
+    <header style="margin-bottom: -20px;">
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,15 +26,20 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to 'Sign up', new_user_registration_path %></li>
-              <li><a href="#">Sign in</a></li>
+              
+              <% unless user_signed_in? %>
+                <li><%= link_to 'Sign up', new_user_registration_path %></li>
+                <li><%= link_to 'Sign in', new_user_session_path %></li>
+              <% else %>
+                <li style="margin-top:15px"><%= current_user.email %></li>
+                <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+              <% end %>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
       </nav>
     </header>
-    <div class="row">
-      <div class="col-md-12">
+      <div class="row">
         <% flash.each do |key, msg| %>
           <div class="text-center alert
                       alert-<%= key == 'notice' ? 'success' : 'danger' %>">
@@ -42,9 +47,11 @@
           
           </div>
         <% end %>
+        
+        <%= yield %>
       </div>
-      <%= yield %>
       
-    </div>
+      
+    
   </body>
 </html>
