@@ -30,9 +30,19 @@ class RidesController < ApplicationController
   end
 
   def update
+    if @ride.update(ride_params)
+      flash[:notice] = "Ride successfully updated!"
+      redirect_to [current_user, @ride]
+    else
+      flash.now[:danger] = "Ride has not been updated!"
+      render :edit
+    end
   end
 
   def destroy
+    @ride.destroy
+    flash[:notice] = "Ride has been deleted!"
+    redirect_to root_path
   end
   
   private

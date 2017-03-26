@@ -1,5 +1,5 @@
 class Ride < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   
   validates :from, presence: true
   validates :to, presence: true
@@ -10,7 +10,11 @@ class Ride < ApplicationRecord
   validates :price, presence: true, numericality: {greater_than_or_equal_to: 0, only_integer: true}
   
   def just_time
-    self.ride_time.to_s[11..15] + " h"
+    ride_time.to_s[11..15] + " h"
+  end
+  
+  def normal_date
+    ride_date.strftime("%d-%m-%Y")
   end
 
 end

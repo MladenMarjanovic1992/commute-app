@@ -13,7 +13,7 @@ RSpec.feature "Create a ride" do
     
     fill_in "From", with: "Belgrade"
     fill_in "To", with: "Veinna"
-    fill_in "Ride Date", with: "2017-06-01"
+    fill_in "Ride Date", with: "06-01-2017"
     fill_in "Ride time", with: "12:00"
     fill_in "Seats", with: "3"
     fill_in "Price", with: "1000"

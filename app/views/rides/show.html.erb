@@ -13,17 +13,23 @@
         <h1>car name!</h1>
         <h1>Picture!</h1>
       </div>  
-      <div class="col-md-7">
+      <div class="col-md-5">
         <ul>
           <li>From: <%= @ride.from %></li>
           <li>To: <%= @ride.to %></li>
-          <li>Ride date: <%= @ride.ride_date %></li>
+          <li>Ride date: <%= @ride.normal_date %></li>
           <li>Ride time: <%= @ride.just_time %></li>
           <li>Seats: <%= @ride.seats %></li>
           <li>Price: <%= @ride.price %></li>
           <li>Details: <%= @ride.details %></li>
         </ul>
-      </div>  
+      </div> 
+      <% if current_user == @ride.user %>
+        <div class"col-md-2">
+          <%= link_to "Edit ride", edit_user_ride_path(@ride.user, @ride), class: "btn btn-default btn-lg" %>
+          <%= link_to "Delete ride", user_ride_path(@ride.user, @ride), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-lg" %>
+        </div>
+      <% end %>
     </div>
   </div>
   
