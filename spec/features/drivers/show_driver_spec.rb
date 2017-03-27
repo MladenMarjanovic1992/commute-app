@@ -1,8 +1,9 @@
 require "rails_helper"
 
-RSpec.feature "List rides" do
+RSpec.feature "Show driver" do
   before do
     @mladen = User.create(email: "mladen@email.com", password: "password")
+    login_as(@mladen)
     @ride1 = @mladen.rides.create(from: "Belgrade", to: "Vienna", ride_date: "06-06-2017", ride_time: "16:00:00", price: "1000", seats: "5", details: "Pick you up near Arena")
     @ride2 = @mladen.rides.create(from: "Novi Sad", to: "Berlin", ride_date: "06-06-2017", ride_time: "13:00:00", price: "900", seats: "3", details: "Pick you up near Strand")
   end
@@ -10,7 +11,7 @@ RSpec.feature "List rides" do
   scenario do
     visit "/"
     
-    click_link "Find a ride!"
+    click_link("mladen@email.com")
     
     expect(page).to have_content(@ride1.user.email)
     expect(page).to have_content(@ride1.from)
@@ -29,5 +30,7 @@ RSpec.feature "List rides" do
     expect(page).to have_content(@ride2.price)
     expect(page).to have_content(@ride2.seats)
     expect(page).to have_content(@ride2.details)
+    
   end
+  
 end

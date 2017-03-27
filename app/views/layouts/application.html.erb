@@ -31,7 +31,7 @@
                 <li><%= link_to 'Sign up', new_user_registration_path %></li>
                 <li><%= link_to 'Sign in', new_user_session_path %></li>
               <% else %>
-                <li style="margin-top:15px"><%= current_user.email %></li>
+                <li style="margin-top:15px"><%= link_to current_user.email, drivers_show_path(id: current_user.id) %></li>
                 <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
               <% end %>
             </ul>

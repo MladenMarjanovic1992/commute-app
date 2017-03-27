@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'drivers/show'
+
   get 'rides/index'
 
   get 'rides/show'
