@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Show driver" do
   before do
-    @mladen = User.create(email: "mladen@email.com", password: "password")
+    @mladen = User.create(email: "mladen@email.com", password: "password") # needs fix for image!
     login_as(@mladen)
     @ride1 = @mladen.rides.create(from: "Belgrade", to: "Vienna", ride_date: "06-06-2017", ride_time: "16:00:00", price: "1000", seats: "5", details: "Pick you up near Arena")
     @ride2 = @mladen.rides.create(from: "Novi Sad", to: "Berlin", ride_date: "06-06-2017", ride_time: "13:00:00", price: "900", seats: "3", details: "Pick you up near Strand")
@@ -12,6 +12,8 @@ RSpec.feature "Show driver" do
     visit "/"
     
     click_link("mladen@email.com")
+    
+    #expect(page).to have_content(@ride1.user.image)
     
     expect(page).to have_content(@ride1.user.email)
     expect(page).to have_content(@ride1.from)

@@ -1,14 +1,21 @@
 <div>
   <div class="container">
     <% @driver.rides.each do |ride| %>
-      <%= link_to user_ride_path(ride.user, ride) do %>
-        <div class="row" id="listed-rides">
-          <div class="col-sm-3">
-              <%= ride.user.email %>
-              <h1>Picture!</h1>
-              <p>car name</p>
-          </div>
-          <div class="col-sm-7">
+      <div class="row" id="listed-rides">
+        <div class="col-md-4">
+            <div class="row"><%= @driver.email %></div>
+            <div class="row">
+              <% if @driver.has_image? %>
+                <%= image_tag(@driver.image.url(:med)) %>
+                <%= link_to "Edit profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
+              <% else %>
+                <%= link_to "Add profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
+              <% end %>
+            </div>
+            <div class="row"><p>car name</p></div>
+        </div>
+        <%= link_to user_ride_path(ride.user, ride) do %>
+          <div class="col-md-4">
             <ul>
               <li>From: <%= ride.from %></li>
               <li>To: <%= ride.to %></li>
@@ -18,9 +25,9 @@
               <li>Price: <%= ride.price %></li>
               <li>Details: <%= ride.details %></li>
             </ul>
-          </div>  
-        </div>
-      <% end %>
+          </div> 
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
