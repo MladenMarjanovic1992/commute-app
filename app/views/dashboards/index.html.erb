@@ -1,6 +1,5 @@
 <div class="">
   <div class="header-image">
-    <%= image_tag 'homepage-header.jpeg', class: "img-responsive" %>
   </div>
   
   <div class="jumbotron">
@@ -17,7 +16,7 @@
         <% if user_signed_in? %>
           <%= link_to "Share your ride!", new_user_ride_path(current_user), class: "btn btn-lg btn-default" %>
         <% end %>
-        <%= link_to "Find a ride!", rides_index_path, class: "btn btn-lg btn-default" %>
+        <%= link_to "Find a ride!", rides_index_path %>
       </div>
     </div>
   </div>

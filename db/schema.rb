@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327201303) do
+ActiveRecord::Schema.define(version: 20170328132254) do
+
+  create_table "cars", force: :cascade do |t|
+    t.string   "car_name"
+    t.integer  "user_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "car_image_file_name"
+    t.string   "car_image_content_type"
+    t.integer  "car_image_file_size"
+    t.datetime "car_image_updated_at"
+    t.index ["user_id"], name: "index_cars_on_user_id"
+  end
 
   create_table "rides", force: :cascade do |t|
     t.string   "from"

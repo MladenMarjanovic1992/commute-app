@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :rides
+  has_one :car
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -12,5 +13,8 @@ class User < ApplicationRecord
     image != nil
   end
   
-
+  def has_car?
+    car != nil
+  end
+  
 end

@@ -1,33 +1,50 @@
 <div>
   <div class="container">
-    <% @driver.rides.each do |ride| %>
-      <div class="row" id="listed-rides">
-        <div class="col-md-4">
-            <div class="row"><%= @driver.email %></div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="row"><h3><%= @driver.email %></h3></div>
+          <% if @driver.has_image? %>
             <div class="row">
-              <% if @driver.has_image? %>
-                <%= image_tag(@driver.image.url(:med)) %>
-                <%= link_to "Edit profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
-              <% else %>
-                <%= link_to "Add profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
-              <% end %>
+              <%= image_tag(@driver.image.url(:large)) %>
             </div>
-            <div class="row"><p>car name</p></div>
-        </div>
-        <%= link_to user_ride_path(ride.user, ride) do %>
-          <div class="col-md-4">
-            <ul>
-              <li>From: <%= ride.from %></li>
-              <li>To: <%= ride.to %></li>
-              <li>Ride date: <%= ride.normal_date %></li>
-              <li>Ride time: <%= ride.just_time %></li>
-              <li>Seats: <%= ride.seats %></li>
-              <li>Price: <%= ride.price %></li>
-              <li>Details: <%= ride.details %></li>
-            </ul>
-          </div> 
+            <div class="row">
+              <%= link_to "Edit profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
+            </div>
+          <% else %>
+            <div class="row">
+              <%= link_to "Add profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
+            </div>
+          <% end %>
+          <% if @driver.has_car? %>
+            <div class="row">
+              <%= image_tag(@driver.car.car_image.url(:large)) %>
+            </div>
+            <div class="row">
+              <%= link_to "Edit car image", root_path, class: "btn btn-success" %>
+            </div>
+          <% else %>
+            <div class="row">
+              <%= link_to "Add car", new_user_car_path(@driver), class: "btn btn-success" %>
+            </div>
+          <% end %>
+        
+      </div>
+      
+      <div class="col-md-4" id="listed-rides">
+        <% @driver.rides.each do |ride| %>
+          <%= link_to user_ride_path(ride.user, ride) do %>
+              <ul>
+                <li>From: <%= ride.from %></li>
+                <li>To: <%= ride.to %></li>
+                <li>Ride date: <%= ride.normal_date %></li>
+                <li>Ride time: <%= ride.just_time %></li>
+                <li>Seats: <%= ride.seats %></li>
+                <li>Price: <%= ride.price %></li>
+                <li>Details: <%= ride.details %></li>
+              </ul>
+          <% end %>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
