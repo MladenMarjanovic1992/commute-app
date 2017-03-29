@@ -12,6 +12,9 @@
             </div>
           <% else %>
             <div class="row">
+              <%= image_tag "http://place-hold.it/200x200" %>
+            </div>
+            <div class="row">
               <%= link_to "Add profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
             </div>
           <% end %>
@@ -20,9 +23,13 @@
               <%= image_tag(@driver.car.car_image.url(:large)) %>
             </div>
             <div class="row">
-              <%= link_to "Edit car image", root_path, class: "btn btn-success" %>
+              <%= link_to "Edit car", edit_user_car_path(@driver, @driver.car), class: "btn btn-success" %>
+              <%= link_to "Delete car", user_car_path(@driver, @driver.car), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-success" %>
             </div>
           <% else %>
+            <div class="row">
+              <%= image_tag "http://place-hold.it/200x200" %>
+            </div>
             <div class="row">
               <%= link_to "Add car", new_user_car_path(@driver), class: "btn btn-success" %>
             </div>

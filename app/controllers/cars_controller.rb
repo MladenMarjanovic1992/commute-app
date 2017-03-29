@@ -16,6 +16,30 @@ class CarsController < ApplicationController
     end
   end
   
+  def edit
+    @car = current_user.car
+  end
+  
+  def update
+    @car = current_user.car
+    
+    if @car.update(car_params)
+      flash[:notice] = "Car updated!"
+      redirect_to drivers_show_path(id: current_user.id)
+    else
+      flash.now[:danger] = "Car not updated!"
+      render :edit
+    end
+  end
+  
+  def destroy
+    @car = current_user.car
+    
+    @car.destroy
+    redirect_to drivers_show_path(id: current_user.id)
+    flash[:notice] = "Car deleted!"
+  end
+  
   private 
   
     def car_params

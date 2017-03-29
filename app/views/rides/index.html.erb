@@ -4,9 +4,17 @@
       <%= link_to user_ride_path(ride.user, ride) do %>
         <div class="row" id="listed-rides">
           <div class="col-sm-3">
-              <%= ride.user.email %>
-              <h1>Picture!</h1>
-              <p>car name</p>
+            <p><%= ride.user.email %></p>
+            <% if ride.user.has_image? %>
+              <div class="row">
+                <%= image_tag(ride.user.image.url(:large)) %>
+              </div>
+            <% else %>
+              <div class="row">
+                <%= image_tag "http://place-hold.it/200x200" %>
+              </div>
+            <% end %>
+            <p><%#= ride.user.car_name %></p>
           </div>
           <div class="col-sm-7">
             <ul>

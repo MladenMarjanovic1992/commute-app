@@ -6,14 +6,6 @@ Rails.application.routes.draw do
 
   get 'rides/show'
 
-  get 'rides/create'
-
-  get 'rides/edit'
-
-  get 'rides/update'
-
-  get 'rides/destroy'
-
   devise_for :users
   get 'dashboards/index', to: 'dashboards#index'
   root 'dashboards#index'
@@ -22,6 +14,6 @@ Rails.application.routes.draw do
     resources :rides
   end
   resources :users do 
-    resources :cars, only: [:new, :create]
+    resources :cars, only: [:new, :create, :edit, :update, :destroy]
   end
 end
