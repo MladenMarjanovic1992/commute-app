@@ -3,8 +3,8 @@
 @locations = ["Belgrade", "Nis", "Novi Sad", "Vienna", "Budapest", "Athens", "Sofia", "Zagreb"]
 
 def change_to_if_same_as_from(user)
-  if user.rides.last.from == user.rides.last.to
-    Ride.update(user.id, to: (@locations - [user.rides.last.from]).sample)
+  if user.rides.last.origin_city == user.rides.last.destination_city
+    Ride.update(user.id, origin_city: (@locations - [user.rides.last.destination_city]).sample)
   end
 end
 
@@ -22,8 +22,8 @@ User.all.each do |user|
     car_image: URI.parse("https://openclipart.org/image/2400px/svg_to_png/73711/classic-car.png")
   )
   user.rides.create!(
-    from: @locations.sample,
-    to: @locations.sample,
+    origin_city: @locations.sample,
+    destination_city: @locations.sample,
     ride_date: rand(15).days.from_now(Date.today),
     ride_time: Time.at(rand(86400)),
     price: rand(400..2000).round(-2),

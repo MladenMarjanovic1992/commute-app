@@ -5,7 +5,7 @@ RSpec.feature "Editing ride" do
   before do
     @mladen = User.create(email: "mladen@email.com", password: "password")
     login_as(@mladen)
-    @ride = @mladen.rides.create(from: "Belgrade", to: "Vienna", ride_date: "06-06-2017", ride_time: "16:00:00", price: "1000", seats: "5", details: "Pick you up near Arena")
+    @ride = @mladen.rides.create(origin_city: "Belgrade", destination_city: "Vienna", ride_date: "06-06-2017", ride_time: "16:00:00", price: "1000", seats: "5", details: "Pick you up near Arena")
   end
   
   scenario "with valid inputs" do
@@ -20,8 +20,8 @@ RSpec.feature "Editing ride" do
     
     expect(page).to have_link("Back")
     
-    fill_in "From", with: "Novi Sad"
-    fill_in "To", with: "Berlin"
+    fill_in "Origin city", with: "Novi Sad"
+    fill_in "Destination city", with: "Berlin"
     fill_in "Ride Date", with: "06-06-2017"
     fill_in "Ride time", with: "13:00"
     fill_in "Seats", with: "2"
@@ -54,8 +54,8 @@ RSpec.feature "Editing ride" do
     
     expect(page).to have_link("Back")
     
-    fill_in "From", with: ""
-    fill_in "To", with: ""
+    fill_in "Origin city", with: ""
+    fill_in "Destination city", with: ""
     fill_in "Ride Date", with: ""
     fill_in "Ride time", with: ""
     fill_in "Seats", with: ""

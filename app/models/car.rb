@@ -1,5 +1,5 @@
 class Car < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   
   validates :car_name, presence: true
   validates :car_image, presence: true

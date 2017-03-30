@@ -1,8 +1,8 @@
 class Ride < ApplicationRecord
   belongs_to :user, dependent: :destroy
   
-  validates :from, presence: true
-  validates :to, presence: true
+  validates :origin_city, presence: true
+  validates :destination_city, presence: true
   validates :seats, presence: true
   validates :ride_date, presence: true
   validates :ride_time, presence: true
@@ -15,6 +15,10 @@ class Ride < ApplicationRecord
   
   def normal_date
     ride_date.strftime("%d-%m-%Y")
+  end
+  
+  def self.search_from_to(_from, _to)
+    where("origin_city = ? and destination_city = ?", "#{_from.capitalize}", "#{_to.capitalize}")
   end
 
 end

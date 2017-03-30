@@ -15,8 +15,8 @@
       </div>  
       <div class="col-md-5">
         <ul>
-          <li>From: <%= @ride.from %></li>
-          <li>To: <%= @ride.to %></li>
+          <li>From: <%= @ride.origin_city %></li>
+          <li>To: <%= @ride.destination_city %></li>
           <li>Ride date: <%= @ride.normal_date %></li>
           <li>Ride time: <%= @ride.just_time %></li>
           <li>Seats: <%= @ride.seats %></li>
@@ -32,6 +32,7 @@
       <% end %>
     </div>
   </div>
+  <%= link_to "Back", :back, class: "btn btn-lg btn-success" %>
   
 </div>
 

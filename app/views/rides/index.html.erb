@@ -14,12 +14,14 @@
                 <%= image_tag "http://place-hold.it/200x200" %>
               </div>
             <% end %>
-            <p><%#= ride.user.car_name %></p>
+            <% if ride.user.has_car? %>
+              <p><%= ride.user.car.car_name %></p>
+            <% end %>
           </div>
           <div class="col-sm-7">
             <ul>
-              <li>From: <%= ride.from %></li>
-              <li>To: <%= ride.to %></li>
+              <li>From: <%= ride.origin_city %></li>
+              <li>To: <%= ride.destination_city %></li>
               <li>Ride date: <%= ride.normal_date %></li>
               <li>Ride time: <%= ride.just_time %></li>
               <li>Seats: <%= ride.seats %></li>
