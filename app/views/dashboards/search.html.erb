@@ -1,7 +1,7 @@
 <div>
   <div class="container">
     <% if @rides.empty? %>
-      <h2 class="text-center">Sorry, there are no rides from <%= params[:origin_city].capitalize %> to <%= params[:destination_city].capitalize %> at the moment.</h2>
+      <h2 class="text-center">Sorry, there are no rides from <%= @origin %> to <%= @destination %> at the moment.</h2>
     <% else %>
       <% @rides.each do |ride| %>
         <%= link_to user_ride_path(ride.user, ride) do %>

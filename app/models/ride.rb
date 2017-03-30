@@ -17,8 +17,13 @@ class Ride < ApplicationRecord
     ride_date.strftime("%d-%m-%Y")
   end
   
-  def self.search_from_to(_from, _to)
-    where("origin_city = ? and destination_city = ?", "#{_from.capitalize}", "#{_to.capitalize}")
+  def self.search_from_to(origin, destination)
+
+    origin = origin.split(" ").map(&:capitalize!).join(" ")
+    destination = destination.split(" ").map(&:capitalize!).join(" ")
+
+    where("origin_city = ? and destination_city = ?", "#{origin}", "#{destination}")
+
   end
 
 end
