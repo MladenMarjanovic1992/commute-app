@@ -18,11 +18,16 @@ class Ride < ApplicationRecord
   end
   
   def self.search_from_to(origin, destination)
+    
+    @search_array = Array.new
+    
+    [origin, destination].each do |city|
+      @search_array << city.split(" ").map(&:capitalize!).join(" ")
+    end
+   # origin = origin.split(" ").map(&:capitalize!).join(" ")
+   # destination = destination.split(" ").map(&:capitalize!).join(" ")
 
-    origin = origin.split(" ").map(&:capitalize!).join(" ")
-    destination = destination.split(" ").map(&:capitalize!).join(" ")
-
-    where("origin_city = ? and destination_city = ?", "#{origin}", "#{destination}")
+    where("origin_city = ? and destination_city = ?", "#{@search_array[0]}", "#{@search_array[1]}")
 
   end
 

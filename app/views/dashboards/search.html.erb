@@ -1,41 +1,75 @@
 <div>
   <div class="container">
-    <% if @rides.empty? %>
-      <h2 class="text-center">Sorry, there are no rides from <%= @origin %> to <%= @destination %> at the moment.</h2>
-    <% else %>
-      <% @rides.each do |ride| %>
-        <%= link_to user_ride_path(ride.user, ride) do %>
-          <div class="row" id="listed-rides">
-            <div class="col-sm-3">
-              <p><%= ride.user.email %></p>
-              <% if ride.user.has_image? %>
-                <div class="row">
-                  <%= image_tag(ride.user.image.url(:large)) %>
-                </div>
-              <% else %>
-                <div class="row">
-                  <%= image_tag "http://place-hold.it/200x200" %>
-                </div>
-              <% end %>
-              <% if ride.user.has_car? %>
-                <p><%= ride.user.car.car_name %></p>
-              <% end %>
-            </div>
-            <div class="col-sm-7">
-              <ul>
-                <li>From: <%= ride.origin_city %></li>
-                <li>To: <%= ride.destination_city %></li>
-                <li>Ride date: <%= ride.normal_date %></li>
-                <li>Ride time: <%= ride.just_time %></li>
-                <li>Seats: <%= ride.seats %></li>
-                <li>Price: <%= ride.price %></li>
-                <li>Details: <%= truncate(ride.details, length: 50) %></li>
-              </ul>
-            </div>  
+    <div class="col-md-4">
+      <%= form_tag(search_rides_dashboards_path,  
+            class: "navbar-form navbar-left",
+            role: "search") do %>
+      <div>
+        <h4>Search by city</h4>
+        
+          <div class="form-group">
+            <%= label_tag :origin_city %>
+            <%= text_field_tag :origin_city, nil, class: "form-control" %>
           </div>
+          <div class="form-group">
+            <%= label_tag :destination_city %>
+            <%= text_field_tag :destination_city, nil, class: "form-control" %>
+          </div>
+      </div>
+      <div>
+        <h4>Search by price</h4>
+        <div class="form-group" id="the_slider">
+          <p><%= number_field_tag :price_from, nil, class: "form-control", id: "price-from" %></p>
+          <p><%= number_field_tag :price_to, nil, class: "form-control", id: "price-to" %></p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group">
+          <%= submit_tag "Go!", class: "btn btn-success btn-lg", id: "full-search-button", role: "button" %>
+        </div>
+          
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <% if @rides.empty? %>
+        <h2 class="text-center">Sorry, there are no rides from <%= @origin %> to <%= @destination %> at the moment.</h2>
+      <% else %>
+        <% @rides.each do |ride| %>
+          <%= link_to user_ride_path(ride.user, ride) do %>
+            <div class="row" id="listed-rides">
+              <div class="col-sm-2">
+                <p><%= ride.user.email %></p>
+                <% if ride.user.has_image? %>
+                  <div class="row">
+                    <%= image_tag(ride.user.image.url(:med)) %>
+                  </div>
+                <% else %>
+                  <div class="row">
+                    <%= image_tag "http://place-hold.it/200x200" %>
+                  </div>
+                <% end %>
+                <% if ride.user.has_car? %>
+                  <p><%= ride.user.car.car_name %></p>
+                <% end %>
+              </div>
+              <div class="col-sm-7">
+                <ul>
+                  <li>From: <%= ride.origin_city %></li>
+                  <li>To: <%= ride.destination_city %></li>
+                  <li>Ride date: <%= ride.normal_date %></li>
+                  <li>Ride time: <%= ride.just_time %></li>
+                  <li>Seats: <%= ride.seats %></li>
+                  <li>Price: <%= ride.price %></li>
+                  <li>Details: <%= truncate(ride.details, length: 50) %></li>
+                </ul>
+              </div>  
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <%= link_to "Back", :back, class: "btn btn-lg btn-success" %>
   </div>
-  <%= link_to "Back", :back, class: "btn btn-lg btn-success" %>
+  
 </div>
