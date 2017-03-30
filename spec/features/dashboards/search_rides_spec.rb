@@ -21,7 +21,7 @@ RSpec.feature "Search rides" do
     expect(page).to have_content(@ride1.just_time)
     expect(page).to have_content(@ride1.price)
     expect(page).to have_content(@ride1.seats)
-    expect(page).to have_content(@ride1.details)
+    expect(page).to have_content(@ride1.details[0..51])
     
     expect(page).not_to have_content(@ride2.origin_city)
     expect(page).not_to have_content(@ride2.destination_city)
@@ -29,7 +29,7 @@ RSpec.feature "Search rides" do
     expect(page).not_to have_content(@ride2.just_time)
     expect(page).not_to have_content(@ride2.price)
     expect(page).not_to have_content(@ride2.seats)
-    expect(page).not_to have_content(@ride2.details)
+    expect(page).not_to have_content(@ride2.details[0..51])
   end
   
   scenario "- ride doesn't exist" do

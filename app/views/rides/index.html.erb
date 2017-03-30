@@ -26,7 +26,7 @@
               <li>Ride time: <%= ride.just_time %></li>
               <li>Seats: <%= ride.seats %></li>
               <li>Price: <%= ride.price %></li>
-              <li>Details: <%= ride.details %></li>
+              <li>Details: <%= truncate(ride.details, length: 50) %></li>
             </ul>
           </div>  
         </div>
