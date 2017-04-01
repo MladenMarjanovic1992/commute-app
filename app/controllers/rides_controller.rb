@@ -1,10 +1,6 @@
 class RidesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :find_ride, only: [:edit, :update, :destroy]
-  
-  def index
-    @rides = Ride.all
-  end
 
   def show
     @ride = Ride.find(params[:id])

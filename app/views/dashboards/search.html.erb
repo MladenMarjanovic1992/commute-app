@@ -1,12 +1,9 @@
 <div>
   <div class="container">
-    <div class="col-md-4">
-      <%= form_tag(search_rides_dashboards_path,  
-            class: "navbar-form navbar-left",
-            role: "search") do %>
-      <div>
-        <h4>Search by city</h4>
-        
+    <div class="col-md-4" id="search-panel">
+      <h4>Search by city</h4>
+      <div class="search-part" id="search-city">
+        <%= form_tag(search_rides_dashboards_path) do %>
           <div class="form-group">
             <%= label_tag :origin_city %>
             <%= text_field_tag :origin_city, nil, class: "form-control" %>
@@ -16,29 +13,39 @@
             <%= text_field_tag :destination_city, nil, class: "form-control" %>
           </div>
       </div>
-      <div>
-        <h4>Search by price</h4>
-        <div class="form-group" id="the_slider">
-          <p><%= number_field_tag :price_from, nil, class: "form-control", id: "price-from" %></p>
-          <p><%= number_field_tag :price_to, nil, class: "form-control", id: "price-to" %></p>
-        </div>
-      </div>
-      <div class="row">
+      <h4>Search by date</h4>
+      <div class="search-part" id="search-date">
         <div class="form-group">
-          <%= submit_tag "Go!", class: "btn btn-success btn-lg", id: "full-search-button", role: "button" %>
+          <%= label_tag :ride_date %>
+          <%= text_field_tag :ride_date, nil, class: 'form-control', id: "search-ride-date" %>
         </div>
-          
       </div>
-      <% end %>
+      <h4>Search by price</h4>
+      <div class="search-part" id="search-price">
+        <div>
+          <div id="the_slider"></div>
+        </div>
+        <div>
+          <div class="form-inline">
+            <%= number_field_tag :price_from, 0, class: "form-control", id: "price-from" %>
+            <%= number_field_tag :price_to, @max_price, class: "form-control", id: "price-to" %>
+            <%= hidden_field_tag :price, nil, class: "form-control", id: "price-range" %>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= submit_tag "Go!", class: "btn btn-success btn-lg", role: "button" %>
+      </div>
+        <% end %>
     </div>
     <div class="col-md-8">
       <% if @rides.empty? %>
-        <h2 class="text-center">Sorry, there are no rides from <%= @origin %> to <%= @destination %> at the moment.</h2>
+        <h2 class="text-center">Sorry, there are no rides with your parameters.</h2>
       <% else %>
         <% @rides.each do |ride| %>
           <%= link_to user_ride_path(ride.user, ride) do %>
             <div class="row" id="listed-rides">
-              <div class="col-sm-2">
+              <div class="col-sm-3">
                 <p><%= ride.user.email %></p>
                 <% if ride.user.has_image? %>
                   <div class="row">
@@ -69,7 +76,7 @@
         <% end %>
       <% end %>
     </div>
-    <%= link_to "Back", :back, class: "btn btn-lg btn-success" %>
   </div>
   
 </div>
+

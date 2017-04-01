@@ -8,6 +8,7 @@
   </div>
   
   <div class="container">
+    <h2>Find a ride!</h2>
     <div class="row" id="search-rides-homepage">
       <%= form_tag(search_rides_dashboards_path,  
                             class: "navbar-form navbar-left",
@@ -41,7 +42,6 @@
         <% else %>
           <%= link_to 'Sign in!', new_user_session_path, class: "btn btn-lg btn-default" %>
         <% end %>
-        <%= link_to "Find a ride!", rides_index_path, class: "btn btn-lg btn-default" %>
       </div>
     </div>
   </div>

@@ -10,7 +10,7 @@ RSpec.feature "Editing ride" do
   
   scenario "with valid inputs" do
     visit "/"
-    click_link("Find a ride!")
+    click_link(@mladen.email)
     
     path = "/users/#{@mladen.id}/rides/#{@ride.id}"
     link = "a[href=\'#{path}\']"
@@ -44,7 +44,7 @@ RSpec.feature "Editing ride" do
   
   scenario "with valid inputs" do
     visit "/"
-    click_link("Find a ride!")
+    click_link(@mladen.email)
     
     path = "/users/#{@mladen.id}/rides/#{@ride.id}"
     link = "a[href=\'#{path}\']"

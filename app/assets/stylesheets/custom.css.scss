@@ -12,22 +12,26 @@
   background-image: url("https://ide.c9.io/zvezdara92/commute-app/app/assets/images/homepage-header.jpg");
 }
 
-#search-city {
-  margin: 0px 10px;
+.search-part {
+  margin-bottom: 40px;
+  margin-top: 20px;
 }
 
 #price-from, #price-to {
   width: 80px;
   margin-top: 10px;
   margin-bottom: 30px;
-  margin-left: 10px;
 }
 
 #the_slider {
-  margin: 10px 30px;
+  margin: 10px 20px;
 }
 
-#space {
-  height: 200px;
+#search-panel {
+  padding: 20px;
+}
+
+#price-from-label, #price-to-label {
+  visibility:hidden;
 }
 
