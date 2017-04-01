@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'rides/show'
   
   get 'dashboards/index'
+  
+  get 'dashboards/search'
 
   devise_for :users
   root to: 'dashboards#index'
