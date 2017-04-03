@@ -3,7 +3,7 @@
     <div class="col-md-4" id="search-panel">
       <h4>Search by city</h4>
       <div class="search-part" id="search-city">
-        <%= form_tag(search_rides_dashboards_path) do %>
+        <%= form_tag(search_rides_dashboards_path, method: :get, enforce_utf8: false) do %>
           <div class="form-group">
             <%= label_tag :origin_city %>
             <%= text_field_tag :origin_city, nil, class: "form-control" %>
@@ -29,12 +29,12 @@
           <div class="form-inline">
             <%= number_field_tag :price_from, 0, class: "form-control", id: "price-from" %>
             <%= number_field_tag :price_to, @max_price, class: "form-control", id: "price-to" %>
-            <%= hidden_field_tag :price, nil, class: "form-control", id: "price-range" %>
+            
           </div>
         </div>
       </div>
       <div class="form-group">
-        <%= submit_tag "Go!", class: "btn btn-success btn-lg", role: "button" %>
+        <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
       </div>
         <% end %>
     </div>

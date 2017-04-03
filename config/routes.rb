@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   
   resources :dashboards, only: [:index] do
     collection do
-      post :search, to: "dashboards#search", as: 'search_rides'
+      get :search, to: "dashboards#search", as: 'search_rides'
     end
   end
   
