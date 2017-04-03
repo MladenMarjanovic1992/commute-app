@@ -7,28 +7,30 @@
     <h3>Save your money and your environment by sharing a ride.</h3>
   </div>
   
-  <div class="container">
-    <h2>Find a ride!</h2>
-    <div class="row" id="search-rides-homepage">
-      <%= form_tag(search_rides_dashboards_path, method: :get, enforce_utf8: false,   
-                            class: "navbar-form navbar-left",
-                            role: "search") do %>
-        <div class="form-group">
-          <%= label_tag :origin_city %>
-          <%= text_field_tag :origin_city, nil, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= label_tag :destination_city %>
-          <%= text_field_tag :destination_city, nil, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
-        </div>
-      <% end %>
+  <div class="container" id="search-rides-container">
+    <h2 class="text-center">Find a ride!</h2>
+    <div class="row" id="search-form-homepage">
+      <div>
+        <%= form_tag(search_rides_dashboards_path, method: :get, enforce_utf8: false,   
+                              class: "navbar-form navbar-center",
+                              role: "search") do %>
+          <div class="form-group">
+            <%= label_tag :origin_city %>
+            <%= text_field_tag :origin_city, nil, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= label_tag :destination_city %>
+            <%= text_field_tag :destination_city, nil, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
   
-  <div class="container">
+  <div class="container" id="going-somewhere">
     <div class="row">
       <div class="col-md-4">
         <h2>Going somewhere?</h2>
@@ -36,7 +38,7 @@
           <h4>Sign in to share a ride!</h4>
         <% end %>
       </div>
-      <div class="col-md-2 offset-md-6">
+      <div class="pull-right" id="homepage-buttons">
         <% if user_signed_in? %>
           <%= link_to "Share your ride!", new_user_ride_path(current_user), class: "btn btn-lg btn-default" %>
         <% else %>
