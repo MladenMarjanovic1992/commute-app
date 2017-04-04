@@ -77,6 +77,7 @@ GEM
     execjs (2.7.0)
     ffi (1.9.18)
     formatador (0.2.5)
+    geocoder (1.4.3)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     guard (2.14.1)
@@ -243,6 +244,7 @@ DEPENDENCIES
   capybara (= 2.7.1)
   coffee-rails (~> 4.2)
   devise
+  geocoder
   guard
   guard-rspec
   jbuilder (~> 2.5)

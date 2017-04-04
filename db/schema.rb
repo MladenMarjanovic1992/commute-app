@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170330125314) do
+ActiveRecord::Schema.define(version: 20170404141720) do
 
   create_table "cars", force: :cascade do |t|
     t.string   "car_name"
@@ -35,6 +35,10 @@ ActiveRecord::Schema.define(version: 20170330125314) do
     t.datetime "updated_at",       null: false
     t.time     "ride_time"
     t.integer  "price"
+    t.float    "lat_origin"
+    t.float    "long_origin"
+    t.float    "lat_destination"
+    t.float    "long_destination"
     t.index ["user_id"], name: "index_rides_on_user_id"
   end
 
