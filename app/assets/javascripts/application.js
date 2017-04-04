@@ -15,4 +15,10 @@
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
 //= require bootstrap-sprockets
+//= require geocomplete
 //= require_tree .
+
+$(function() {
+  $("#origin-city").geocomplete();
+  $("#destination-city").geocomplete();
+});

@@ -22,6 +22,10 @@
           <li>Seats: <%= @ride.seats %></li>
           <li>Price: <%= @ride.price %></li>
           <li>Details: <%= @ride.details %></li>
+          <li hidden id="origin-lat"><%= @ride.lat_origin %></li>
+          <li hidden id="origin-long"><%= @ride.long_origin %></li>
+          <li hidden id="destination-lat"><%= @ride.lat_destination %></li>
+          <li hidden id="destination-long"><%= @ride.long_destination %></li>
         </ul>
       </div> 
       <% if current_user == @ride.user %>
@@ -31,8 +35,17 @@
         </div>
       <% end %>
     </div>
+    <div class="row">
+      <div id="map">
+        
+      </div>
+    </div>
   </div>
-  <%= link_to "Back", session[:search_results], class: "btn btn-lg btn-success" %>
+  <% if session[:search_results] %>
+    <%= link_to "Back", session[:search_results], class: "btn btn-lg btn-success" %>
+  <% else %>
+    <%= link_to "Back", :back, class: "btn btn-lg btn-success" %>
+  <% end %>
   
 </div>
 

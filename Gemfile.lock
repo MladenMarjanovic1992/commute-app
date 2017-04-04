@@ -78,6 +78,8 @@ GEM
     ffi (1.9.18)
     formatador (0.2.5)
     geocoder (1.4.3)
+    geocomplete_rails (1.7.0)
+      railties (>= 3.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     guard (2.14.1)
@@ -245,6 +247,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   geocoder
+  geocomplete_rails
   guard
   guard-rspec
   jbuilder (~> 2.5)

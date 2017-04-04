@@ -1,6 +1,6 @@
 @user_names = ["mladen", "milos", "miodrag", "andrija", "nikola", "vuk", "milica", "ivana", "mila", "aleksandra"]
 @car_names = ["Corolla", "Yaris", "Verso", "Auris", "GT86", "Prius", "C-HR", "Auris TS", "Camry", "RAV4"]
-@locations = ["Belgrade", "Nis", "Novi Sad", "Vienna", "Budapest", "Athens", "Sofia", "Zagreb"]
+@locations = ["Belgrade", "Sarajevo", "Novi Sad", "Vienna", "Budapest", "Athens", "Sofia", "Zagreb"]
 
 def change_to_if_same_as_from(user)
   if user.rides.last.origin_city == user.rides.last.destination_city

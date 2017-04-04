@@ -1,82 +1,86 @@
-<div class='row'>
-  <div class='col-md-12'>
-    <%= form_for([current_user, @ride],
-    :html => {class: "form-horizontal", role: "form"}) do |f| %>
-      <% if @ride.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@ride.errors.count, "error") %>
-          prohibited this ride from being saved:</h2>
-
-          <ul>
-          <% @ride.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
+<div>
+  <div class='row'>
+    <div class='col-md-12'>
+      <%= form_for([current_user, @ride],
+      :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <% if @ride.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@ride.errors.count, "error") %>
+            prohibited this ride from being saved:</h2>
+  
+            <ul>
+            <% @ride.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+  
+        <div class='form-group'>
+          <div class='control-label col-md-2'>
+            <%= f.label :origin_city, "Origin city" %>
+          </div>
+          <div class='col-md-10'>
+            <%= f.text_field :origin_city, class: 'form-control', id: "origin-city" %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='control-label col-md-2'>
+            <%= f.label :destination_city, "Destination city" %>
+          </div>
+          <div class='col-md-10'>
+            <%= f.text_field :destination_city, class: 'form-control', id: "destination-city" %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='control-label col-md-2'>
+            <%= f.label :ride_date, "Ride Date" %>
+          </div>
+          <div class='col-md-10'>
+            <%= f.text_field :ride_date, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='control-label col-md-2'>
+            <%= f.label :ride_time, "Ride time" %>
+          </div>
+          <div class='col-md-10'>
+            <%= f.time_field :ride_time, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='control-label col-md-2'>
+            <%= f.label :seats, "Seats" %>
+          </div>
+          <div class='col-md-10'>
+            <%= f.number_field :seats, min: 1, max: 5, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='control-label col-md-2'>
+            <%= f.label :price, "Price" %>
+          </div>
+          <div class='col-md-10'>
+            <%= f.number_field :price, min: 0, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='form-group'>
+          <div class='control-label col-md-2'>
+            <%= f.label :details, "Ride details" %><br>
+          </div>
+          <div class='col-md-10'>
+            <%= f.text_area :details, class: 'form-control', rows: "10" %>
+          </div>
+        </div>
+  
+        <div class='form-group'>
+          <div class='col-md-offset-2 col-md-10'>
+            <%= f.submit "Finish", class: 'btn btn-success btn-lg' %>
+          </div>
         </div>
       <% end %>
-
-      <div class='form-group'>
-        <div class='control-label col-md-2'>
-          <%= f.label :origin_city, "Origin city" %>
-        </div>
-        <div class='col-md-10'>
-          <%= f.text_field :origin_city, class: 'form-control' %>
-        </div>
-      </div>
-      <div class='form-group'>
-        <div class='control-label col-md-2'>
-          <%= f.label :destination_city, "Destination city" %>
-        </div>
-        <div class='col-md-10'>
-          <%= f.text_field :destination_city, class: 'form-control' %>
-        </div>
-      </div>
-      <div class='form-group'>
-        <div class='control-label col-md-2'>
-          <%= f.label :ride_date, "Ride Date" %>
-        </div>
-        <div class='col-md-10'>
-          <%= f.text_field :ride_date, class: 'form-control' %>
-        </div>
-      </div>
-      <div class='form-group'>
-        <div class='control-label col-md-2'>
-          <%= f.label :ride_time, "Ride time" %>
-        </div>
-        <div class='col-md-10'>
-          <%= f.time_field :ride_time, class: 'form-control' %>
-        </div>
-      </div>
-      <div class='form-group'>
-        <div class='control-label col-md-2'>
-          <%= f.label :seats, "Seats" %>
-        </div>
-        <div class='col-md-10'>
-          <%= f.number_field :seats, min: 1, max: 5, class: 'form-control' %>
-        </div>
-      </div>
-      <div class='form-group'>
-        <div class='control-label col-md-2'>
-          <%= f.label :price, "Price" %>
-        </div>
-        <div class='col-md-10'>
-          <%= f.number_field :price, min: 0, class: 'form-control' %>
-        </div>
-      </div>
-      <div class='form-group'>
-        <div class='control-label col-md-2'>
-          <%= f.label :details, "Ride details" %><br>
-        </div>
-        <div class='col-md-10'>
-          <%= f.text_area :details, class: 'form-control', rows: "10" %>
-        </div>
-      </div>
-
-      <div class='form-group'>
-        <div class='col-md-offset-2 col-md-10'>
-          <%= f.submit "Finish", class: 'btn btn-success btn-lg' %>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>
+
+

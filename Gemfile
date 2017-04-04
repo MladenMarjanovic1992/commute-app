@@ -36,6 +36,7 @@ gem 'devise'
 gem 'jquery-ui-rails', '5.0.5'
 gem 'paperclip'
 gem 'geocoder'
+gem 'geocomplete_rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
