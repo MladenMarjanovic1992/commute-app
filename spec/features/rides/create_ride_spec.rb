@@ -11,8 +11,8 @@ RSpec.feature "Create a ride" do
     click_link "Share your ride!"
     expect(page).to have_link("Back")
     
-    fill_in "Origin city", with: "Belgrade"
-    fill_in "Destination city", with: "Vienna"
+    fill_in "origin-city", with: "Belgrade"
+    fill_in "destination-city", with: "Vienna"
     fill_in "Ride Date", with: "06-01-2017"
     fill_in "Ride time", with: "12:00"
     fill_in "Seats", with: "3"
@@ -34,8 +34,8 @@ RSpec.feature "Create a ride" do
     click_link "Share your ride!"
     expect(page).to have_link("Back")
     
-    fill_in "Origin city", with: ""
-    fill_in "Destination city", with: ""
+    fill_in "origin-city", with: ""
+    fill_in "destination-city", with: ""
     fill_in "Ride Date", with: ""
     fill_in "Ride time", with: ""
     fill_in "Seats", with: ""

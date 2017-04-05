@@ -20,8 +20,8 @@ RSpec.feature "Editing ride" do
     
     expect(page).to have_link("Back")
     
-    fill_in "Origin city", with: "Novi Sad"
-    fill_in "Destination city", with: "Berlin"
+    fill_in "origin-city", with: "Novi Sad"
+    fill_in "destination-city", with: "Berlin"
     fill_in "Ride Date", with: "06-06-2017"
     fill_in "Ride time", with: "13:00"
     fill_in "Seats", with: "2"
@@ -54,8 +54,8 @@ RSpec.feature "Editing ride" do
     
     expect(page).to have_link("Back")
     
-    fill_in "Origin city", with: ""
-    fill_in "Destination city", with: ""
+    fill_in "origin-city", with: ""
+    fill_in "destination-city", with: ""
     fill_in "Ride Date", with: ""
     fill_in "Ride time", with: ""
     fill_in "Seats", with: ""
