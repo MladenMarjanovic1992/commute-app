@@ -5,7 +5,7 @@ class DashboardsController < ApplicationController
   def search
     params[:price] = params[:price_from]..params[:price_to] if (params[:price_from].present? && params[:price_to].present?)
     @max_price = Ride.max_price
-    @rides = Ride.where(nil)
+    @rides = Ride.includes(:user, :car)
     search_params(params).each do |method, param|
       @rides = @rides.public_send(method, param) if param.present?
     end
