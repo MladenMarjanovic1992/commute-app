@@ -3,8 +3,9 @@
 @locations = ["Belgrade", "Sarajevo", "Novi Sad", "Vienna", "Budapest", "Athens", "Sofia", "Zagreb"]
 
 def change_to_if_same_as_from(user)
-  if user.rides.last.origin_city == user.rides.last.destination_city
-    Ride.update(user.id, origin_city: (@locations - [user.rides.last.destination_city]).sample)
+  ride = user.rides.last
+  if ride.origin_city == ride.destination_city
+    ride.update(origin_city: (@locations - [ride.destination_city]).sample)
   end
 end
 

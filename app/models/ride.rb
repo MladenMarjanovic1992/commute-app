@@ -9,6 +9,8 @@ class Ride < ApplicationRecord
   validates_presence_of :origin_city, :destination_city, :seats, :ride_date, :ride_time, :details, :price
   validates :price, numericality: {greater_than_or_equal_to: 0, only_integer: true}
   
+  paginates_per 10
+  
   scope :origin_city, -> (origin_city) { where("origin_city LIKE ?", "%#{origin_city.split(" ").map(&:capitalize!).join(" ")}%") }
   scope :destination_city, -> (destination_city) { where("destination_city LIKE ?", "%#{destination_city.split(" ").map(&:capitalize!).join(" ")}%") }
   scope :ride_date, -> (ride_date) { where ride_date: ride_date}

@@ -42,6 +42,7 @@
       <% if @rides.empty? %>
         <h2 class="text-center">Sorry, there are no rides with your parameters.</h2>
       <% else %>
+        <div class="text-center"><%= paginate @rides %></div>
         <% @rides.each do |ride| %>
           <%= link_to user_ride_path(ride.user, ride) do %>
             <div class="row" id="listed-rides">
@@ -74,6 +75,7 @@
             </div>
           <% end %>
         <% end %>
+        <div class="text-center"><%= paginate @rides %></div>
       <% end %>
     </div>
   </div>
