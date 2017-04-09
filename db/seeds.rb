@@ -21,15 +21,17 @@ User.all.each do |user|
     car_name: "Toyota #{@car_names[user.id - 1]}",
     car_image: URI.parse("https://openclipart.org/image/2400px/svg_to_png/73711/classic-car.png")
   )
-  user.rides.create!(
-    origin_city: @locations.sample,
-    destination_city: @locations.sample,
-    ride_date: rand(15).days.from_now(Date.today),
-    ride_time: Time.at(rand(86400)),
-    price: rand(400..2000).round(-2),
-    seats: rand(1..5),
-    details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-  )
-  change_to_if_same_as_from(user)
+  10.times do 
+    user.rides.create!(
+      origin_city: @locations.sample,
+      destination_city: @locations.sample,
+      ride_date: rand(15).days.from_now(Date.today),
+      ride_time: Time.at(rand(86400)),
+      price: rand(400..2000).round(-2),
+      seats: rand(1..5),
+      details: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    )
+    change_to_if_same_as_from(user)
+  end
   
 end

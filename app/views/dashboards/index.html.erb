@@ -16,11 +16,11 @@
                               role: "search") do %>
           <div class="form-group">
             <%= label_tag :origin_city %>
-            <%= text_field_tag :origin_city, nil, class: "form-control" %>
+            <%= text_field_tag :origin_city, nil, required: true, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= label_tag :destination_city %>
-            <%= text_field_tag :destination_city, nil, class: "form-control" %>
+            <%= text_field_tag :destination_city, nil, required: true, class: "form-control" %>
           </div>
           <div class="form-group">
             <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
