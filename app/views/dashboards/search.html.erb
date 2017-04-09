@@ -46,7 +46,7 @@
           <%= link_to user_ride_path(ride.user, ride) do %>
             <div class="row" id="listed-rides">
               <div class="col-sm-3">
-                <p><%= ride.user.email %></p>
+                <p><%= ride.user.name %></p>
                 <% if ride.user.has_image? %>
                   <div class="row">
                     <%= image_tag(ride.user.image.url(:med)) %>

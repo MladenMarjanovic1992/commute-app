@@ -11,6 +11,7 @@ end
 
 @user_names.length.times do |num|
   User.create!(
+    name: @user_names[num - 1].capitalize,
     email: "#{@user_names[num - 1]}@email.com",
     password: "password",
     image: URI.parse("https://openclipart.org/image/2400px/svg_to_png/212896/wonderfulbeardedbaldman.png")

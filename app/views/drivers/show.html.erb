@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="row"><h3><%= @driver.email %></h3></div>
+        <div class="row"><h3><%= @driver.name %></h3></div>
           <% if @driver.has_image? %>
             <div class="row">
               <%= image_tag(@driver.image.url(:large)) %>
