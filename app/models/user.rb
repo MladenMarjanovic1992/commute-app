@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          
   validates_presence_of :name
+  acts_as_messageable
 
   has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
@@ -17,6 +18,10 @@ class User < ApplicationRecord
   
   def has_car?
     car != nil
+  end
+  
+  def mailboxer_email(object)
+    email
   end
   
 end

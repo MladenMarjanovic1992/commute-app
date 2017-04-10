@@ -38,6 +38,8 @@ gem 'paperclip'
 gem 'geocoder'
 gem 'geocomplete_rails'
 gem 'kaminari'
+gem 'mailboxer'
+gem 'gravatar_image_tag'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
