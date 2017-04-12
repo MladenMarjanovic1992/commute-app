@@ -24,4 +24,8 @@ class User < ApplicationRecord
     email
   end
   
+  def first_name
+    self.name.split[0]
+  end
+  
 end

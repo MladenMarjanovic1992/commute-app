@@ -24,7 +24,7 @@ RSpec.feature "Search rides" do
     expect(page).to have_content(@ride1.price)
     expect(page).to have_content(@ride1.seats)
     expect(page).to have_content(@ride1.details[0..51])
-    
+
     expect(page).not_to have_content(@ride2.origin_city)
     expect(page).not_to have_content(@ride2.destination_city)
     expect(page).not_to have_content(@ride2.normal_date)
@@ -84,7 +84,7 @@ RSpec.feature "Search rides" do
     expect(page).to have_content(@ride1.price)
     expect(page).to have_content(@ride1.seats)
     expect(page).to have_content(@ride1.details[0..51])
-    
+
     expect(page).to have_content(@ride3.origin_city)
     expect(page).to have_content(@ride3.destination_city)
     expect(page).to have_content(@ride3.normal_date)
@@ -92,7 +92,7 @@ RSpec.feature "Search rides" do
     expect(page).to have_content(@ride3.price)
     expect(page).to have_content(@ride3.seats)
     expect(page).to have_content(@ride3.details[0..51])
-    
+
   end
   
   scenario "from search page with date parameters" do
@@ -113,7 +113,7 @@ RSpec.feature "Search rides" do
     expect(page).to have_content(@ride4.price)
     expect(page).to have_content(@ride4.seats)
     expect(page).to have_content(@ride4.details[0..51])
-    
+
   end
   
 end
