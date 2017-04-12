@@ -9,9 +9,9 @@
     <div class="row">
       <div class="col-md-5">
         <%= @ride.user.name %>
-        <h1>Picture!</h1>
-        <h1>car name!</h1>
-        <h1>Picture!</h1>
+        <%= image_tag(@ride.user.image.url(:large)) %>
+        <%= @ride.car.car_name %>
+        <%= image_tag(@ride.car.car_image.url(:large)) %>
       </div>  
       <div class="col-md-5">
         <ul>
@@ -30,8 +30,11 @@
       </div> 
       <% if current_user == @ride.user %>
         <div class"col-md-2">
-          <%= link_to "Edit ride", edit_user_ride_path(@ride.user, @ride), class: "btn btn-default btn-lg" %>
-          <%= link_to "Delete ride", user_ride_path(@ride.user, @ride), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-default btn-lg" %>
+          <%= link_to "Edit ride", [:edit, current_user, @ride], class: "btn btn-default btn-lg" %>
+          <%= link_to 'Delete ride', [current_user, @ride],
+                        class: 'destroy-btn',
+                        method: :delete,
+                        data: { confirm: 'Are you sure?' } %>
         </div>
       <% end %>
     </div>

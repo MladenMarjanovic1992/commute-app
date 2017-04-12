@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Create a ride" do
   before do
-    @mladen = User.create(email: "mladen@email.com", password: "password")
+    @mladen = User.first
     login_as(@mladen)
   end
   
