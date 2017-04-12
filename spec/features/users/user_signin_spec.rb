@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "User sign in" do
   before do
-    @mladen = User.create(email: "mladen@email.com", password: "password")
+    @mladen = User.create(name: "Mladen", email: "mladen@email.com", password: "password")
   end
   
   scenario "with valid credentials" do
@@ -15,7 +15,7 @@ RSpec.feature "User sign in" do
     
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Signed in successfully")
-    expect(page).to have_content(@mladen.email)
+    expect(page).to have_content(@mladen.name)
     expect(page).not_to have_link("Sign in")
     expect(page).not_to have_link("Sign up")
     expect(page).to have_link("Sign out")

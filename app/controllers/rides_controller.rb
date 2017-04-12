@@ -1,9 +1,9 @@
 class RidesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :find_ride, only: [:edit, :update, :destroy, :show]
+  before_action :find_ride, only: [:edit, :update, :destroy]
 
   def show
-    
+    @ride = Ride.find(params[:id])
   end
   
   def new

@@ -2,8 +2,16 @@ require "rails_helper"
 
 RSpec.feature "Create a ride" do
   before do
-    @mladen = User.first
+    @mladen = User.create(name: "Mladen", email: "mladen@email.com", password: "password")
     login_as(@mladen)
+    visit "/"
+    click_link(@mladen.name)
+    click_link "Add car"
+    
+    fill_in "Car", with: "Toyota C-HR"
+    attach_file "Car image", "spec/pexels-photo-crop1.jpg"
+    
+    click_button "Finish"
   end
   
   scenario "with valid credentials" do 
@@ -23,7 +31,7 @@ RSpec.feature "Create a ride" do
     
     ride = Ride.last
     
-    expect(current_path).to eq("/users/#{@mladen.id}/rides/#{@mladen.rides.last.id}")
+    expect(current_path).to eq("/users/#{@mladen.id}/rides/#{ride.id}")
     expect(ride.user_id).to eq(@mladen.id)
     expect(page).to have_content("Your ride has been created")
     

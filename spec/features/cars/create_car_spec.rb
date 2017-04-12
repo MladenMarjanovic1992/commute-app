@@ -5,6 +5,7 @@ RSpec.feature "Add a car" do
     visit "/"
     
     click_link "Sign up"
+    fill_in "Name", with: "Mladen"
     fill_in "Email", with: "mladen@email.com"
     fill_in "Password", with: "password"
     fill_in "Password confirmation", with: "password"
@@ -15,7 +16,7 @@ RSpec.feature "Add a car" do
   
   scenario "with invalid inputs" do
     visit "/"
-    click_link @mladen.email
+    click_link @mladen.name
     click_link "Add car"
     
     fill_in "Car", with: ""
@@ -26,7 +27,7 @@ RSpec.feature "Add a car" do
   
   scenario "with valid inputs" do
     visit "/"
-    click_link @mladen.email
+    click_link @mladen.name
     click_link "Add car"
     
     fill_in "Car", with: "Toyota C-HR"

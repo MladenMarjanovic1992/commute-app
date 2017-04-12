@@ -6,7 +6,7 @@ RSpec.feature "Show driver" do
     
     click_link "Sign up"
     fill_in "Name", with: "Mladen Marjanovic"
-    fill_in "Email", with: "mladen5@email.com"
+    fill_in "Email", with: "mladen@email.com"
     fill_in "Password", with: "password"
     fill_in "Password confirmation", with: "password"
     attach_file "Image", "spec/pexels-photo-crop.jpg"

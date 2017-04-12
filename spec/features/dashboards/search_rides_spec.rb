@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Search rides" do
   before do
-    @mladen = User.create(email: "mladen@email.com", password: "password")
+    @mladen = User.create(name: "Mladen", email: "mladen@email.com", password: "password")
     @ride1 = @mladen.rides.create(origin_city: "Belgrade", destination_city: "Novi Sad", ride_date: "06-06-2017", ride_time: "16:00:00", price: "1000", seats: "5", details: "Pick you up near Arena")
     @ride2 = @mladen.rides.create(origin_city: "Vienna", destination_city: "Berlin", ride_date: "07-06-2017", ride_time: "13:00:00", price: "1700", seats: "3", details: "Pick you up near Strand")
     @ride3 = @mladen.rides.create(origin_city: "Belgrade", destination_city: "Novi Sad", ride_date: "09-06-2017", ride_time: "15:00:00", price: "1100", seats: "2", details: "Pick you up in Zemun")
@@ -16,7 +16,7 @@ RSpec.feature "Search rides" do
     fill_in "Destination city", with: "novi sad"
     click_button "Go!"
     
-    expect(page).to have_content(@ride1.user.email)
+    expect(page).to have_content(@ride1.user.name)
     expect(page).to have_content(@ride1.origin_city)
     expect(page).to have_content(@ride1.destination_city)
     expect(page).to have_content(@ride1.normal_date)
@@ -56,7 +56,7 @@ RSpec.feature "Search rides" do
     fill_in "price-to", with: "1100"
     click_button "Go!"
     
-    expect(page).to have_content(@ride1.user.email)
+    expect(page).to have_content(@ride1.user.name)
     expect(page).to have_content(@ride1.origin_city)
     expect(page).to have_content(@ride1.destination_city)
     expect(page).to have_content(@ride1.normal_date)
@@ -76,7 +76,7 @@ RSpec.feature "Search rides" do
     fill_in "price-to", with: "1100"
     click_button "Go!"
     
-    expect(page).to have_content(@ride1.user.email)
+    expect(page).to have_content(@ride1.user.name)
     expect(page).to have_content(@ride1.origin_city)
     expect(page).to have_content(@ride1.destination_city)
     expect(page).to have_content(@ride1.normal_date)
@@ -105,7 +105,7 @@ RSpec.feature "Search rides" do
     fill_in "search-ride-date", with: "08-06-2017"
     click_button "Go!"
     
-    expect(page).to have_content(@ride4.user.email)
+    expect(page).to have_content(@ride4.user.name)
     expect(page).to have_content(@ride4.origin_city)
     expect(page).to have_content(@ride4.destination_city)
     expect(page).to have_content(@ride4.normal_date)

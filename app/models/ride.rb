@@ -1,5 +1,5 @@
 class Ride < ApplicationRecord
-  belongs_to :user, dependent: :destroy
+  belongs_to :user
   has_one :car, through: :user
   geocoded_by :origin_city, latitude: :lat_origin, longitude: :long_origin
   geocoded_by :destination_city, latitude: :lat_destination, longitude: :long_destination
