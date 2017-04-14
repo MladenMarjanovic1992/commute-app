@@ -7,49 +7,59 @@
 
   <div class="container">
     <div class="row">
+      <div class="col-md-7">
+        <div id="map"></div>
+      </div>
       <div class="col-md-5">
-        <%= @ride.user.name %>
-        <%= image_tag(@ride.user.image.url(:large)) %>
-        <%= @ride.car.car_name %>
-        <%= image_tag(@ride.car.car_image.url(:large)) %>
-      </div>  
-      <div class="col-md-5">
-        <ul>
-          <li>From: <%= @ride.origin_city %></li>
-          <li>To: <%= @ride.destination_city %></li>
-          <li>Ride date: <%= @ride.normal_date %></li>
-          <li>Ride time: <%= @ride.just_time %></li>
-          <li>Seats: <%= @ride.seats %></li>
-          <li>Price: <%= @ride.price %></li>
-          <li>Details: <%= @ride.details %></li>
-          <li hidden id="origin-lat"><%= @ride.lat_origin %></li>
-          <li hidden id="origin-long"><%= @ride.long_origin %></li>
-          <li hidden id="destination-lat"><%= @ride.lat_destination %></li>
-          <li hidden id="destination-long"><%= @ride.long_destination %></li>
-        </ul>
+        <h3>From: <%= @ride.origin_city %></h3>
+        <h3>To: <%= @ride.destination_city %></h3>
+        <h4>Ride date: <%= @ride.normal_date %></h4>
+        <h4>Ride time: <%= @ride.just_time %></h4>
+        <h4>Seats: <%= @ride.seats %></h4>
+        <h4>Price: <%= @ride.price %></h4>
+        <p><%= link_to "Send #{@ride.user.name} a message", new_message_path(recipientId: @ride.user_id), class: 'btn btn-md btn-primary' %></p>
+        <p>Details: <%= @ride.details %></p>
+        <div hidden id="origin-lat"><%= @ride.lat_origin %></div>
+        <div hidden id="origin-long"><%= @ride.long_origin %></div>
+        <div hidden id="destination-lat"><%= @ride.lat_destination %></div>
+        <div hidden id="destination-long"><%= @ride.long_destination %></div> 
       </div> 
-      <% if current_user == @ride.user %>
-        <div class"col-md-2">
-          <%= link_to "Edit ride", [:edit, current_user, @ride], class: "btn btn-default btn-lg" %>
-          <%= link_to 'Delete ride', [current_user, @ride],
-                        class: "btn btn-default btn-lg",
-                        method: :delete,
-                        data: { confirm: 'Are you sure?' } %>
-        </div>
-      <% end %>
     </div>
-    <div class="row">
-      <div id="map">
-        
+    <div class="row" id="ride-driver-info">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-xs-4">
+            <%= image_tag(@ride.user.image.url(:large)) %>
+          </div>
+          <div class="col-xs-8">
+            <h3><%= @ride.user.name %></h3>
+            <h3>Rides: <%= @ride.user.rides.count %></h3>
+            <h3>Rating: IMPLEMENT RATING!!!</h3>
+          </div>
+        </div>
+      </div>  
+      <div class="col-md-4">
+        <h3><%= @ride.car.car_name %></h3>
+        <%= image_tag(@ride.car.car_image.url(:large)) %>
+      </div>     
+      <div class"col-md-2">
+        <% if session[:search_results] %>
+          <%= link_to "Back", session[:search_results], class: "btn btn-lg btn-success" %>
+        <% else %>
+          <%= link_to "Back", user_path(@ride.user), class: "btn btn-lg btn-success" %>
+        <% end %>
+        <% if current_user == @ride.user %>
+          
+            <%= link_to "Edit ride", [:edit, current_user, @ride], class: "btn btn-default btn-lg" %>
+            <%= link_to 'Delete ride', [current_user, @ride],
+                          class: "btn btn-default btn-lg",
+                          method: :delete,
+                          data: { confirm: 'Are you sure?' } %>
+          
+        <% end %>
       </div>
     </div>
   </div>
-  <% if session[:search_results] %>
-    <%= link_to "Back", session[:search_results], class: "btn btn-lg btn-success" %>
-  <% else %>
-    <%= link_to "Back", :back, class: "btn btn-lg btn-success" %>
-  <% end %>
-  
 </div>
 
 
