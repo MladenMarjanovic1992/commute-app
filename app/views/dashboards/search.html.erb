@@ -49,11 +49,7 @@
                 <p><%= ride.user.name %></p>
                 <% if ride.user.has_image? %>
                   <div class="row">
-                    <%= image_tag(ride.user.image.url(:med)) %>
-                  </div>
-                <% else %>
-                  <div class="row">
-                    <%= image_tag "http://place-hold.it/200x200" %>
+                    <%= image_tag(ride.user.image.url(:med), class: "image") %>
                   </div>
                 <% end %>
                 <% if ride.user.has_car? %>

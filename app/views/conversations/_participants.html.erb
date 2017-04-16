@@ -1,6 +1,6 @@
 <% conversation.participants.each do |participant| %>
   <% unless participant == current_user %>
-    <div><%= image_tag(participant.image.url(:small)) %></div>
+    <div><%= image_tag(participant.image.url(:small), class: "image-round") %></div>
     <p><%= participant.name %></p>
   <% end %>
 <% end %>

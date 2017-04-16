@@ -15,7 +15,7 @@
           <div class="media">
             <% message = receipt.message %>
             <div class="media-left">
-              <%= image_tag(message.sender.image.url(:small)) %><p><%= message.sender.name %></p>
+              <%= image_tag(message.sender.image.url(:small), class: "image-round") %><p><%= message.sender.name %></p>
             </div>
   
             <div class="media-body">

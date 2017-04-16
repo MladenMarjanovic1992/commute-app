@@ -13,6 +13,7 @@ end
   User.create!(
     name: @user_names[num - 1].capitalize,
     email: "#{@user_names[num - 1]}@email.com",
+    about_me: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     password: "password",
     image: URI.parse("https://openclipart.org/image/2400px/svg_to_png/212896/wonderfulbeardedbaldman.png")
   )

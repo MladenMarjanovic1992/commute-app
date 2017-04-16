@@ -1,9 +1,12 @@
 class RidesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
   before_action :find_ride, only: [:edit, :update, :destroy]
+  before_action :has_car?, only: :new
 
   def show
     @ride = Ride.find(params[:id])
+    @driver = @ride.user
+    @car = @ride.car
   end
   
   def new
@@ -42,6 +45,13 @@ class RidesController < ApplicationController
   end
   
   private
+  
+    def has_car?
+      unless current_user.has_car?
+        flash[:alert] = "You must add a car before posting a ride"
+        redirect_to controller: :cars, action: :new
+      end
+    end
   
     def find_ride
       @ride = current_user.rides.find(params[:id])

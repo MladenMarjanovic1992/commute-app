@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery-ui/datepicker
 //= require jquery-ui/slider
+//= require jquery.raty
+//= require ratyrate
 //= require bootstrap-sprockets
 //= require geocomplete
 //= require_tree .

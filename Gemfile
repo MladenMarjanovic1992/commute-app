@@ -40,6 +40,7 @@ gem 'geocomplete_rails'
 gem 'kaminari'
 gem 'mailboxer'
 gem 'gravatar_image_tag'
+gem 'ratyrate'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
