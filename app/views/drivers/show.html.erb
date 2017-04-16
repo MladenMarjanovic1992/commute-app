@@ -1,59 +1,70 @@
-<div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="row"><h3><%= @driver.name %></h3></div>
-          <% if @driver.has_image? %>
-            <div class="row">
-              <%= image_tag(@driver.image.url(:large)) %>
-            </div>
-            <div class="row">
-              <%= link_to "Edit profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
-            </div>
-          <% else %>
-            <div class="row">
-              <%= image_tag "http://place-hold.it/200x200" %>
-            </div>
-            <div class="row">
-              <%= link_to "Add profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
-            </div>
-          <% end %>
-          <% if @driver.has_car? %>
-            <div class="row">
-              <%= image_tag(@driver.car.car_image.url(:large)) %>
-            </div>
-            <p><%= @driver.car.car_name %></p>
-            <div class="row">
-              <%= link_to "Edit car", edit_user_car_path(@driver, @driver.car), class: "btn btn-success" %>
-              <%= link_to "Delete car", user_car_path(@driver, @driver.car), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-success" %>
-            </div>
-          <% else %>
-            <div class="row">
-              <%= image_tag "http://place-hold.it/200x200" %>
-            </div>
-            <div class="row">
-              <%= link_to "Add car", new_user_car_path(@driver), class: "btn btn-success" %>
-            </div>
-          <% end %>
-        
-      </div>
-      
-      <div class="col-md-4" id="listed-rides">
-        <% @driver.rides.each do |ride| %>
-          <%= link_to user_ride_path(ride.user, ride) do %>
-              <ul>
-                <li>From: <%= ride.origin_city %></li>
-                <li>To: <%= ride.destination_city %></li>
-                <li>Ride date: <%= ride.normal_date %></li>
-                <li>Ride time: <%= ride.just_time %></li>
-                <li>Seats: <%= ride.seats %></li>
-                <li>Price: <%= ride.price %></li>
-                <li>Details: <%= ride.details %></li>
-              </ul>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
+<div class="container">
+  <div class="col-md-3 text-center">
+    <div class="row"><h3><%= @driver.name %></h3></div>
+      <% if @driver.has_image? %>
+        <div class="row">
+          <%= image_tag(@driver.image.url(:large)) %>
+        </div>
+        <br>
+        <div>
+          <p><%= link_to "Edit profile picture", edit_user_registration_path(@driver), class: "btn btn-default" %></p>
+        </div>
+      <% else %>
+        <div class="row">
+          <%= image_tag "http://place-hold.it/200x200" %>
+        </div>
+        <div class="row">
+          <%= link_to "Add profile picture", edit_user_registration_path(@driver), class: "btn btn-success" %>
+        </div>
+      <% end %>
+      <% if @driver.has_car? %>
+        <div class="row">
+          <%= image_tag(@driver.car.car_image.url(:large)) %>
+        </div>
+        <p><%= @driver.car.car_name %></p>
+        <div class="row">
+          <%= link_to "Edit car", edit_user_car_path(@driver, @driver.car), class: "btn btn-default" %>
+          <%= link_to "Delete car", user_car_path(@driver, @driver.car), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        </div>
+      <% else %>
+        <div class="row">
+          <%= image_tag "http://place-hold.it/200x200" %>
+        </div>
+        <div class="row">
+          <%= link_to "Add car", new_user_car_path(@driver), class: "btn btn-success" %>
+        </div>
+      <% end %>
+    
   </div>
-  <%= link_to "Back", :back, class: "btn btn-lg btn-success" %>
+  
+  <div class="col-md-6" id="listed-rides">
+    <% @rides.each do |ride| %>
+      <%= link_to user_ride_path(ride.user, ride) do %>
+        <div class="row" id="ride-path">
+          <div class="col-sm-6">
+            <h3>From: <%= ride.origin_city %></h3>
+          </div>
+          <div class="col-sm-6">
+            <h3>To: <%= ride.destination_city %></h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <h4>Ride date: <%= ride.normal_date %></h4>
+            <h4>Ride time: <%= ride.just_time %></h4>
+          </div> 
+          <div class="col-sm-4">
+            <h4>Seats: <%= ride.seats %></h4>
+            <h4>Price: <%= ride.price %></h4>
+          </div> 
+        </div>
+        <div class="row" id="driver-ride-details">
+          <p>Details: <%= ride.details %></p>
+        </div>
+      <% end %>
+    <% end %>
+    <div class="text-center"><%= paginate @rides %></div>
+  </div>
 </div>
+
+

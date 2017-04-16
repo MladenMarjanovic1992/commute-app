@@ -3,6 +3,10 @@
 
 // global
 
+.buttons {
+  margin-top: 20px;
+}
+
 #button-back {
   margin-left: -50px;
 }
@@ -86,4 +90,14 @@
 
 #ride-driver-info {
   margin: 60px 0;
+}
+
+// driver
+
+#ride-path {
+  display: inline;
+}
+
+#driver-ride-details {
+  padding: 18px;
 }

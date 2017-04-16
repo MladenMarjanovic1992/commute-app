@@ -1,19 +1,10 @@
 <header class="text-center">
-  <h2>New ride for <%= current_user.email %> </h2>
+  <h2>New ride for <%= current_user.name %> </h2>
 </header>
-
+<br>
 <div class="container">
   <%= render 'form' %>
-
-  <div class="row">
-    <div id="map"></div>
-  </div>
 </div>
-
-
-
-<div class='col-md-offset-4'>
-  <%= link_to "Back", :back, class: "btn btn-lg btn-success", id: "button-back" %>
+<div class="container">
+  <div id="map"></div>
 </div>
-
-

@@ -1,8 +1,10 @@
-<div>
-  <h2>Conversation</h2>
-  <p>Chatting with
-  <%= render 'conversations/participants', conversation: @conversation %>
-  </p>
+<h2 class="text-center">Conversation</h2>
+<br>
+<div class="container">
+  <h4>Chatting with:</h4>
+  <div>
+    <%= render 'conversations/participants', conversation: @conversation %>
+  </div>
   
   <div class="panel panel-default">
     <div class="panel-heading"><%= @conversation.subject %></div>
@@ -13,7 +15,7 @@
           <div class="media">
             <% message = receipt.message %>
             <div class="media-left">
-              <%= gravatar_for message.sender, 45, message.sender.name %>
+              <%= image_tag(message.sender.image.url(:small)) %><p><%= message.sender.name %></p>
             </div>
   
             <div class="media-body">

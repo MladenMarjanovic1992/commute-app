@@ -1,5 +1,6 @@
 <% conversation.participants.each do |participant| %>
   <% unless participant == current_user %>
-    <%= gravatar_for participant %>
+    <div><%= image_tag(participant.image.url(:small)) %></div>
+    <p><%= participant.name %></p>
   <% end %>
 <% end %>
