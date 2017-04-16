@@ -73,8 +73,24 @@
   visibility:hidden;
 }
 
-#search-rides-container {
-  text-align: center;
+#search-results {
+  margin-top: 20px;
+}
+
+#listed-rides {
+  margin: 10px 0;
+}
+
+.link-ride {
+  color: black;
+}
+
+#price {
+  margin-top: -8px;
+}
+
+#price-section {
+  margin-top: 10px;
 }
 
 // map

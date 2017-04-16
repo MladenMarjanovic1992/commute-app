@@ -1,84 +1,44 @@
-<div>
-  <div class="container">
-    <div class="col-md-4" id="search-panel">
-      <h4>Search by city</h4>
-      <div class="search-part" id="search-city">
-        <%= form_tag(search_rides_dashboards_path, method: :get, enforce_utf8: false) do %>
-          <div class="form-group">
-            <%= label_tag :origin_city %>
-            <%= text_field_tag :origin_city, nil, required: true, class: "form-control" %>
-          </div>
-          <div class="form-group">
-            <%= label_tag :destination_city %>
-            <%= text_field_tag :destination_city, nil, required: true, class: "form-control" %>
-          </div>
-      </div>
-      <h4>Search by date</h4>
-      <div class="search-part" id="search-date">
+<div class="container">
+  <div class="col-md-4" id="search-panel">
+    <h4>Search by city</h4>
+    <div class="search-part" id="search-city">
+      <%= form_tag(search_rides_dashboards_path, remote: true, method: :get, enforce_utf8: false) do %>
         <div class="form-group">
-          <%= label_tag :ride_date %>
-          <%= text_field_tag :ride_date, nil, class: 'form-control', id: "search-ride-date" %>
+          <%= label_tag :origin_city %>
+          <%= text_field_tag :origin_city, params[:origin_city], required: true, class: "form-control" %>
         </div>
-      </div>
-      <h4>Search by price</h4>
-      <div class="search-part" id="search-price">
-        <div>
-          <div id="the_slider"></div>
+        <div class="form-group">
+          <%= label_tag :destination_city %>
+          <%= text_field_tag :destination_city, params[:destination_city], required: true, class: "form-control" %>
         </div>
-        <div>
-          <div class="form-inline">
-            <%= number_field_tag :price_from, 0, class: "form-control", id: "price-from" %>
-            <%= number_field_tag :price_to, @max_price, class: "form-control", id: "price-to" %>
-          </div>
-        </div>
-      </div>
+    </div>
+    <h4>Search by date</h4>
+    <div class="search-part" id="search-date">
       <div class="form-group">
-        <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
+        <%= label_tag :ride_date %>
+        <%= text_field_tag :ride_date, nil, class: 'form-control', id: "search-ride-date" %>
       </div>
-        <% end %>
     </div>
-    <div class="col-md-8">
-      <% if @rides.empty? %>
-        <h2 class="text-center">Sorry, there are no rides with your parameters.</h2>
-      <% else %>
-        <div class="text-center"><%= paginate @rides %></div>
-        <% @rides.each do |ride| %>
-          <%= link_to user_ride_path(ride.user, ride) do %>
-            <div class="row" id="listed-rides">
-              <div class="col-sm-3">
-                <p><%= ride.user.name %></p>
-                <% if ride.user.has_image? %>
-                  <div class="row">
-                    <%= image_tag(ride.user.image.url(:med), class: "image") %>
-                  </div>
-                <% end %>
-                <% if ride.user.has_car? %>
-                  <p><%= ride.user.car.car_name %></p>
-                <% end %>
-              </div>
-              <div class="col-sm-7">
-                <ul>
-                  <li>From: <%= ride.origin_city %></li>
-                  <li>To: <%= ride.destination_city %></li>
-                  <li>Ride date: <%= ride.normal_date %></li>
-                  <li>Ride time: <%= ride.just_time %></li>
-                  <li>Seats: <%= ride.seats %></li>
-                  <li>Price: <%= ride.price %></li>
-                  <li>Details: <%= truncate(ride.details, length: 50) %></li>
-                </ul>
-              </div> 
-              <div class="col-sm-2">
-                <% unless ride.user == current_user %>
-                  <%= link_to "Send #{ride.user.name} a message", new_message_path(recipientId: ride.user_id), class: 'btn btn-md btn-primary' %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-        <div class="text-center"><%= paginate @rides %></div>
+    <h4>Search by price</h4>
+    <div class="search-part" id="search-price">
+      <div>
+        <div id="the_slider"></div>
+      </div>
+      <div>
+        <div class="form-inline">
+          <%= number_field_tag :price_from, 0, class: "form-control", id: "price-from" %>
+          <%= number_field_tag :price_to, @max_price, class: "form-control", id: "price-to" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
+    </div>
       <% end %>
-    </div>
   </div>
-  
+  <div class="col-md-8" id="search-results">
+    <%= render 'results' %>
+  </div>
 </div>
+  
 

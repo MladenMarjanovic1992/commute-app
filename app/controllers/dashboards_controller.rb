@@ -1,4 +1,5 @@
 class DashboardsController < ApplicationController
+
   def index
   end
   
@@ -10,6 +11,10 @@ class DashboardsController < ApplicationController
       @rides = @rides.public_send(method, param) if param.present?
     end
     session[:search_results] = request.url
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   private
