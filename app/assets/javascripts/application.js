@@ -19,3 +19,9 @@
 //= require bootstrap-sprockets
 //= require geocomplete
 //= require_tree .
+
+$('document').ready(function() {
+  setTimeout(function() {
+    $('.flash-msg').slideUp();
+  }, 3000);
+});

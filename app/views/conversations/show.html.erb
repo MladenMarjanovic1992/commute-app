@@ -1,3 +1,4 @@
+<br>
 <h2 class="text-center">Conversation</h2>
 <br>
 <div class="container">
@@ -33,5 +34,6 @@
       <%= text_area_tag 'body', nil, cols: 3, class: 'form-control', placeholder: 'Type something...', required: true %>
     </div>
     <%= submit_tag "Send Message", class: 'btn btn-primary' %>
+    <%= link_to "Back", conversations_path, class: "btn btn-default" %>
   <% end %>
 </div>

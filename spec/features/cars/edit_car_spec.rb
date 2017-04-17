@@ -7,6 +7,7 @@ RSpec.feature "Edit a car" do
     click_link "Sign up"
     fill_in "Name", with: "Mladen"
     fill_in "Email", with: "mladen@email.com"
+    fill_in "About me", with: "Hi I'm Mladen."
     fill_in "Password", with: "password"
     fill_in "Password confirmation", with: "password"
     attach_file "Image", "spec/pexels-photo-crop1.jpg"

@@ -14,6 +14,11 @@ class ConversationsController < ApplicationController
     end
 
     @conversations = @conversations.page params[:page]
+    
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def show

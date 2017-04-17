@@ -2,7 +2,20 @@ require "rails_helper"
 
 RSpec.feature "User sign in" do
   before do
-    @mladen = User.create(name: "Mladen", email: "mladen@email.com", password: "password")
+    visit "/"
+    
+    click_link "Sign up"
+    fill_in "Name", with: "Mladen"
+    fill_in "Email", with: "mladen@email.com"
+    fill_in "About me", with: "Hi I'm Mladen."
+    fill_in "Password", with: "password"
+    fill_in "Password confirmation", with: "password"
+    attach_file "Image", "spec/pexels-photo-crop1.jpg"
+    click_button "Sign up"
+    @mladen = User.last
+    
+    visit "/"
+    click_link "Sign out"
   end
   
   scenario "with valid credentials" do

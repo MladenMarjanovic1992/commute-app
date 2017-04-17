@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   
+  after_action -> { flash.discard }, if: -> { request.xhr? }
+  
   before_action :configure_permitted_parameters, if: :devise_controller?
   
   rescue_from ActiveRecord::RecordNotFound do
