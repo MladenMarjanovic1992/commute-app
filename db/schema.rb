@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170416092827) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
     t.string   "rateable_type"
@@ -30,15 +33,15 @@ ActiveRecord::Schema.define(version: 20170416092827) do
     t.string   "car_image_content_type"
     t.integer  "car_image_file_size"
     t.datetime "car_image_updated_at"
-    t.index ["user_id"], name: "index_cars_on_user_id"
+    t.index ["user_id"], name: "index_cars_on_user_id", using: :btree
   end
 
   create_table "mailboxer_conversation_opt_outs", force: :cascade do |t|
     t.string  "unsubscriber_type"
     t.integer "unsubscriber_id"
     t.integer "conversation_id"
-    t.index ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id"
-    t.index ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type"
+    t.index ["conversation_id"], name: "index_mailboxer_conversation_opt_outs_on_conversation_id", using: :btree
+    t.index ["unsubscriber_id", "unsubscriber_type"], name: "index_mailboxer_conversation_opt_outs_on_unsubscriber_id_type", using: :btree
   end
 
   create_table "mailboxer_conversations", force: :cascade do |t|
@@ -63,10 +66,10 @@ ActiveRecord::Schema.define(version: 20170416092827) do
     t.datetime "created_at",                           null: false
     t.boolean  "global",               default: false
     t.datetime "expires"
-    t.index ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id"
-    t.index ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type"
-    t.index ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type"
-    t.index ["type"], name: "index_mailboxer_notifications_on_type"
+    t.index ["conversation_id"], name: "index_mailboxer_notifications_on_conversation_id", using: :btree
+    t.index ["notified_object_id", "notified_object_type"], name: "index_mailboxer_notifications_on_notified_object_id_and_type", using: :btree
+    t.index ["sender_id", "sender_type"], name: "index_mailboxer_notifications_on_sender_id_and_sender_type", using: :btree
+    t.index ["type"], name: "index_mailboxer_notifications_on_type", using: :btree
   end
 
   create_table "mailboxer_receipts", force: :cascade do |t|
@@ -82,8 +85,8 @@ ActiveRecord::Schema.define(version: 20170416092827) do
     t.boolean  "is_delivered",               default: false
     t.string   "delivery_method"
     t.string   "message_id"
-    t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id"
-    t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type"
+    t.index ["notification_id"], name: "index_mailboxer_receipts_on_notification_id", using: :btree
+    t.index ["receiver_id", "receiver_type"], name: "index_mailboxer_receipts_on_receiver_id_and_receiver_type", using: :btree
   end
 
   create_table "overall_averages", force: :cascade do |t|
@@ -102,8 +105,8 @@ ActiveRecord::Schema.define(version: 20170416092827) do
     t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
-    t.index ["rater_id"], name: "index_rates_on_rater_id"
+    t.index ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+    t.index ["rater_id"], name: "index_rates_on_rater_id", using: :btree
   end
 
   create_table "rating_caches", force: :cascade do |t|
@@ -114,7 +117,7 @@ ActiveRecord::Schema.define(version: 20170416092827) do
     t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+    t.index ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
   end
 
   create_table "rides", force: :cascade do |t|
@@ -132,7 +135,7 @@ ActiveRecord::Schema.define(version: 20170416092827) do
     t.float    "long_origin"
     t.float    "lat_destination"
     t.float    "long_destination"
-    t.index ["user_id"], name: "index_rides_on_user_id"
+    t.index ["user_id"], name: "index_rides_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -154,8 +157,13 @@ ActiveRecord::Schema.define(version: 20170416092827) do
     t.datetime "image_updated_at"
     t.string   "name"
     t.text     "about_me"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "cars", "users"
+  add_foreign_key "mailboxer_conversation_opt_outs", "mailboxer_conversations", column: "conversation_id", name: "mb_opt_outs_on_conversations_id"
+  add_foreign_key "mailboxer_notifications", "mailboxer_conversations", column: "conversation_id", name: "notifications_on_conversation_id"
+  add_foreign_key "mailboxer_receipts", "mailboxer_notifications", column: "notification_id", name: "receipts_on_notification_id"
+  add_foreign_key "rides", "users"
 end
