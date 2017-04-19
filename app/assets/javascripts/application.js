@@ -21,7 +21,10 @@
 //= require_tree .
 
 $('document').ready(function() {
-  setTimeout(function() {
-    $('.flash-msg').slideUp();
-  }, 3000);
+  console.log($('#flash-text').val());
+  if ($('#flash-text').val() != undefined) {
+    setTimeout(function() {
+      $('.flash-msg').slideUp();
+    }, 3000);
+  }
 });

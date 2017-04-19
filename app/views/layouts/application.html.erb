@@ -15,7 +15,7 @@
     <div class="flash-msg">
       <% flash.each do |key, msg| %>
         <div class="text-center alert
-                    alert-<%= key == 'notice' ? 'success' : 'danger' %>">
+                    alert-<%= key == 'notice' ? 'success' : 'danger' %>" id="flash-text">
           <%= msg %>
         </div>
       <% end %>

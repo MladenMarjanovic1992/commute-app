@@ -1,5 +1,6 @@
 class CarsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!
+  
   def new
     @car = current_user.build_car
   end
