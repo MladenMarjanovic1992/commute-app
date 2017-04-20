@@ -26,7 +26,7 @@
           <p>Details: <%= truncate(ride.details, length: 50) %></p>
         </div>
     <% end %>
-        <div class="col-md-3 text-center" id="price-section">
+        <div class="col-sm-3 text-center" id="price-section">
           <h4>Price: </h4>
           <h3 id="price"><%= ride.price %></h3>
           <% unless ride.user == current_user %>

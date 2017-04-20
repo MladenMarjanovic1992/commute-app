@@ -36,34 +36,29 @@
       <% end %>
   </div>
   
-  <div class="col-md-6" id="listed-rides">
-    <% @rides.each do |ride| %>
-      <%= link_to user_ride_path(ride.user, ride) do %>
-        <div class="row" id="ride-path">
-          <div class="col-sm-6">
-            <h4>From: <%= ride.origin_city %></h4>
+  <div class="col-md-6" id="driver-add-ride">
+    <%= link_to "Add ride", new_user_ride_path(@driver), class: 'btn btn-primary btn-block' %>
+  </div>
+  <div class="col-md-6">
+      <% @rides.each do |ride| %>
+        <div class="row" id="listed-rides">
+          <%= link_to user_ride_path(ride.user, ride), class: "link-ride" do %>
+            <div class="col-sm-8">
+              <h4><%= ride.origin_city %> - <%= ride.destination_city %></h4>
+              <p>Ride date: <%= ride.normal_date %>, at <%= ride.just_time %></p>
+              <p>Seats: <%= ride.seats %></p>
+              
+              <p>Details: <%= truncate(ride.details, length: 50) %></p>
+            </div>
+          <% end %>
+          <div class="col-sm-4 text-center" id="price-section">
+            <h4>Price: </h4>
+            <h3 id="price"><%= ride.price %></h3>
           </div>
-          <div class="col-sm-6">
-            <h4>To: <%= ride.destination_city %></h4>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6">
-            <h4>Ride date: <%= ride.normal_date %></h4>
-            <h4>Ride time: <%= ride.just_time %></h4>
-          </div> 
-          <div class="col-sm-4">
-            <h4>Seats: <%= ride.seats %></h4>
-            <h4>Price: <%= ride.price %></h4>
-          </div> 
-        </div>
-        <div class="row" id="driver-ride-details">
-          <p>Details: <%= ride.details %></p>
         </div>
       <% end %>
-    <% end %>
-    <div class="text-center"><%= paginate @rides %></div>
   </div>
+  <div class="text-center"><%= paginate @rides %></div>
 </div>
 
 
