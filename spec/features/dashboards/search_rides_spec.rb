@@ -27,16 +27,16 @@ RSpec.feature "Search rides" do
     click_button "Go!"
     
     expect(page).to have_content(@ride1.user.name)
-    expect(page).to have_content(@ride1.origin_city)
-    expect(page).to have_content(@ride1.destination_city)
+    expect(page).to have_content(@ride1.just_origin_city)
+    expect(page).to have_content(@ride1.just_destination_city)
     expect(page).to have_content(@ride1.normal_date)
     expect(page).to have_content(@ride1.just_time)
     expect(page).to have_content(@ride1.price)
     expect(page).to have_content(@ride1.seats)
     expect(page).to have_content(@ride1.details[0..51])
 
-    expect(page).not_to have_content(@ride2.origin_city)
-    expect(page).not_to have_content(@ride2.destination_city)
+    expect(page).not_to have_content(@ride2.just_origin_city)
+    expect(page).not_to have_content(@ride2.just_destination_city)
     expect(page).not_to have_content(@ride2.normal_date)
     expect(page).not_to have_content(@ride2.just_time)
     expect(page).not_to have_content(@ride2.price)
@@ -67,8 +67,8 @@ RSpec.feature "Search rides" do
     click_button "Go!"
     
     expect(page).to have_content(@ride1.user.name)
-    expect(page).to have_content(@ride1.origin_city)
-    expect(page).to have_content(@ride1.destination_city)
+    expect(page).to have_content(@ride1.just_origin_city)
+    expect(page).to have_content(@ride1.just_destination_city)
     expect(page).to have_content(@ride1.normal_date)
     expect(page).to have_content(@ride1.just_time)
     expect(page).to have_content(@ride1.price)
@@ -87,16 +87,16 @@ RSpec.feature "Search rides" do
     click_button "Go!"
     
     expect(page).to have_content(@ride1.user.name)
-    expect(page).to have_content(@ride1.origin_city)
-    expect(page).to have_content(@ride1.destination_city)
+    expect(page).to have_content(@ride1.just_origin_city)
+    expect(page).to have_content(@ride1.just_destination_city)
     expect(page).to have_content(@ride1.normal_date)
     expect(page).to have_content(@ride1.just_time)
     expect(page).to have_content(@ride1.price)
     expect(page).to have_content(@ride1.seats)
     expect(page).to have_content(@ride1.details[0..51])
 
-    expect(page).to have_content(@ride3.origin_city)
-    expect(page).to have_content(@ride3.destination_city)
+    expect(page).to have_content(@ride3.just_origin_city)
+    expect(page).to have_content(@ride3.just_destination_city)
     expect(page).to have_content(@ride3.normal_date)
     expect(page).to have_content(@ride3.just_time)
     expect(page).to have_content(@ride3.price)
@@ -116,8 +116,8 @@ RSpec.feature "Search rides" do
     click_button "Go!"
     
     expect(page).to have_content(@ride4.user.name)
-    expect(page).to have_content(@ride4.origin_city)
-    expect(page).to have_content(@ride4.destination_city)
+    expect(page).to have_content(@ride4.just_origin_city)
+    expect(page).to have_content(@ride4.just_destination_city)
     expect(page).to have_content(@ride4.normal_date)
     expect(page).to have_content(@ride4.just_time)
     expect(page).to have_content(@ride4.price)

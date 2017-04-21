@@ -20,8 +20,12 @@ class Ride < ApplicationRecord
     ride_time.to_s[11..15] + " h"
   end
   
-  def just_city
-    split(', ')[0]
+  def just_origin_city
+    origin_city.split(', ')[0]
+  end
+  
+  def just_destination_city
+    destination_city.split(', ')[0]
   end
   
   def normal_date

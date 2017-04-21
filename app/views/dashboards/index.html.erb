@@ -9,7 +9,7 @@
   </div>
   
   <div class="container" id="search-rides-container">
-    <h2 class="text-center">Find a ride!</h2>
+    <h1 class="text-center">Find a ride!</h1>
     <div class="row text-center" id="search-form-homepage">
       <div>
         <%= form_tag(search_rides_dashboards_path, method: :get, enforce_utf8: false,   
@@ -31,20 +31,23 @@
     </div>
   </div>
   
-  <div class="container" id="going-somewhere">
+  <div class="container-fluid">
     <div class="row">
-      <div class="col-md-4">
-        <h2>Going somewhere?</h2>
-        <% unless user_signed_in? %>
-          <h4>Sign in to share a ride!</h4>
-        <% end %>
+      <div class="col-md-6 going-somewhere">
+        <%= image_tag("going-somewhere.jpg", class: "img-responsive") %>
       </div>
-      <div class="pull-right" id="homepage-buttons">
-        <% if user_signed_in? %>
-          <%= link_to "Share your ride!", new_user_ride_path(current_user), class: "btn btn-lg btn-primary" %>
-        <% else %>
-          <%= link_to 'Sign in!', new_user_session_path, class: "btn btn-lg btn-primary" %>
-        <% end %>
+      <div class="col-md-6 going-somewhere">
+        <div id="going-somewhere-text">
+          <h1>Going somewhere?</h1>
+          <% unless user_signed_in? %>
+            <h3>Sign in to share a ride!</h3>
+            <br>
+            <%= link_to 'Sign in!', new_user_session_path, class: "btn btn-lg btn-primary" %>
+          <% else %>
+            <br>
+            <%= link_to "Share your ride!", new_user_ride_path(current_user), class: "btn btn-lg btn-primary" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -36,8 +36,8 @@ RSpec.feature "Show driver" do
 
     expect(page).to have_content(@mladen.car.car_name)
     expect(page).to have_content(@ride1.user.name)
-    expect(page).to have_content(@ride1.origin_city)
-    expect(page).to have_content(@ride1.destination_city)
+    expect(page).to have_content(@ride1.just_origin_city)
+    expect(page).to have_content(@ride1.just_destination_city)
     expect(page).to have_content(@ride1.normal_date)
     expect(page).to have_content(@ride1.just_time)
     expect(page).to have_content(@ride1.price)
@@ -45,8 +45,8 @@ RSpec.feature "Show driver" do
     expect(page).to have_content(@ride1.details)
     
     expect(page).to have_content(@ride2.user.name)
-    expect(page).to have_content(@ride2.origin_city)
-    expect(page).to have_content(@ride2.destination_city)
+    expect(page).to have_content(@ride2.just_origin_city)
+    expect(page).to have_content(@ride2.just_destination_city)
     expect(page).to have_content(@ride2.normal_date)
     expect(page).to have_content(@ride2.just_time)
     expect(page).to have_content(@ride2.price)
