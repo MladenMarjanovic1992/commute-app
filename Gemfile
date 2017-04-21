@@ -41,6 +41,7 @@ gem 'kaminari'
 gem 'mailboxer'
 gem 'gravatar_image_tag'
 gem 'ratyrate'
+gem 'aws-sdk'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
