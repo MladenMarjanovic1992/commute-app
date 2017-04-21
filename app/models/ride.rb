@@ -20,6 +20,10 @@ class Ride < ApplicationRecord
     ride_time.to_s[11..15] + " h"
   end
   
+  def just_city
+    split(', ')[0]
+  end
+  
   def normal_date
     ride_date.strftime("%d-%m-%Y")
   end
@@ -28,7 +32,6 @@ class Ride < ApplicationRecord
     maximum(:price)
   end
   
-
   private
 
   def geocode_endpoints

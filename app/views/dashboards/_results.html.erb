@@ -6,7 +6,7 @@
     <%= link_to drivers_show_path(id: ride.user_id), class: "link-ride" do %>
       <div class="row" id="listed-rides">
         <div class="col-sm-3 text-center">
-          <h4><%= ride.user.name %></h4>
+          <h4><%= ride.user.first_name %></h4>
           <% if ride.user.has_image? %>
             <div class="image">
               <%= image_tag(ride.user.image.url(:med), class: "image") %>
@@ -19,7 +19,7 @@
     <% end %>
     <%= link_to user_ride_path(ride.user, ride), class: "link-ride" do %>
         <div class="col-sm-6">
-          <h4><%= ride.origin_city %> - <%= ride.destination_city %></h4>
+          <h4><%= ride.origin_city.just_city %> - <%= ride.destination_city.just_city %></h4>
           <p>Ride date: <%= ride.normal_date %>, at <%= ride.just_time %></p>
           <p>Seats: <%= ride.seats %></p>
           

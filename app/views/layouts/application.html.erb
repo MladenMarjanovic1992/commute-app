@@ -21,13 +21,13 @@
       <% end %>
     </div>
     
-    <div><%= yield %></div>
+    <div class="page-content"><%= yield %></div>
     
     <%= render 'shared/footer' %>
     
     <%= javascript_include_tag 'application' %>
     <% if request.fullpath == "/users/#{params[:user_id]}/rides/#{params[:id]}" || request.fullpath == "/users/#{params[:user_id]}/rides/new" %>
-      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmdElKmT_ux06pCwT7wmIY5GQCQyMkSL8&callback=initMap&libraries=places" type="text/javascript"></script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap&libraries=places" type="text/javascript"></script>
     <% end %>
   </body>
   
