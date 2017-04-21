@@ -1,49 +1,52 @@
-<div>
-  <%= image_tag("homepage-header.jpg", class: "img-responsive", id: "header-image") %>
-</div>
-
-<div class="jumbotron">
-  <h1>Welcome to Commute.rs!</h1>
-  <h3>Save money and the environment by sharing a ride.</h3>
-</div>
-
-<div class="container" id="search-rides-container">
-  <h2 class="text-center">Find a ride!</h2>
-  <div class="row text-center" id="search-form-homepage">
-    <div>
-      <%= form_tag(search_rides_dashboards_path, method: :get, enforce_utf8: false,   
-                            class: "navbar-form navbar-center",
-                            role: "search") do %>
-        <div class="form-group">
-          <%= label_tag :origin_city %>
-          <%= text_field_tag :origin_city, nil, required: true, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= label_tag :destination_city %>
-          <%= text_field_tag :destination_city, nil, required: true, class: "form-control" %>
-        </div>
-        <div class="form-group">
-          <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
-        </div>
-      <% end %>
+<div class="homepage-content">
+  <div>
+    <%= image_tag("homepage-header.jpg", class: "img-responsive", id: "header-image") %>
+  </div>
+  
+  <div class="jumbotron">
+    <h1>Welcome to Commute.rs!</h1>
+    <h3>Save money and the environment by sharing a ride.</h3>
+  </div>
+  
+  <div class="container" id="search-rides-container">
+    <h2 class="text-center">Find a ride!</h2>
+    <div class="row text-center" id="search-form-homepage">
+      <div>
+        <%= form_tag(search_rides_dashboards_path, method: :get, enforce_utf8: false,   
+                              class: "navbar-form navbar-center",
+                              role: "search") do %>
+          <div class="form-group">
+            <%= label_tag :origin_city %>
+            <%= text_field_tag :origin_city, nil, required: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= label_tag :destination_city %>
+            <%= text_field_tag :destination_city, nil, required: true, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= submit_tag "Go!", name: nil, class: "btn btn-success btn-lg", role: "button" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container" id="going-somewhere">
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Going somewhere?</h2>
+        <% unless user_signed_in? %>
+          <h4>Sign in to share a ride!</h4>
+        <% end %>
+      </div>
+      <div class="pull-right" id="homepage-buttons">
+        <% if user_signed_in? %>
+          <%= link_to "Share your ride!", new_user_ride_path(current_user), class: "btn btn-lg btn-primary" %>
+        <% else %>
+          <%= link_to 'Sign in!', new_user_session_path, class: "btn btn-lg btn-primary" %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
 
-<div class="container" id="going-somewhere">
-  <div class="row">
-    <div class="col-md-4">
-      <h2>Going somewhere?</h2>
-      <% unless user_signed_in? %>
-        <h4>Sign in to share a ride!</h4>
-      <% end %>
-    </div>
-    <div class="pull-right" id="homepage-buttons">
-      <% if user_signed_in? %>
-        <%= link_to "Share your ride!", new_user_ride_path(current_user), class: "btn btn-lg btn-primary" %>
-      <% else %>
-        <%= link_to 'Sign in!', new_user_session_path, class: "btn btn-lg btn-primary" %>
-      <% end %>
-    </div>
-  </div>
-</div>

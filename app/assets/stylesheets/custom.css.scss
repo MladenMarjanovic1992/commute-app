@@ -11,8 +11,12 @@
   margin-left: -50px;
 }
 
-.navbar-default {
-  margin-bottom: -20px;
+.alert {
+  margin-bottom: 0px;
+}
+
+.navbar {
+  margin-bottom: 0px;
 }
 
 #footer {
@@ -27,13 +31,11 @@
   border-radius: 40%;
 }
 
-// homepage
-
-.flash-msg {
-  margin-top: 20px;
-  margin-bottom: -20px;
+.page-content {
+  margin-top: 40px; 
 }
 
+// homepage
 
 #search-form-homepage {
   padding-top: 10px;
@@ -46,6 +48,10 @@
 
 #going-somewhere {
   padding: 40px 0;
+}
+
+.homepage-content {
+  margin-top: -40px;
 }
 
 // search page
