@@ -13,9 +13,10 @@ var destinationCity = document.getElementById('destination-city');
 function initMap() {
   geocoder = new google.maps.Geocoder();
   var mapOptions = {
-    zoom: 12,
+    zoom: 7,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   }
+  
   map = new google.maps.Map(document.getElementById('map'), mapOptions);
     if (originLat != undefined) {
       marker1 = new google.maps.Marker({
@@ -45,6 +46,7 @@ function initMap() {
           if (markerCount < 2 && marker1 == null) {
             marker1 = new google.maps.Marker({
                 position: event.latLng,
+                label: "A",
                 map: map
             });
             markerCount++;
@@ -58,6 +60,7 @@ function initMap() {
           } else if (markerCount < 2 && marker2 == null) {
             marker2 = new google.maps.Marker({
                 position: event.latLng,
+                label: "B",
                 map: map
             });
             markerCount++;
@@ -78,8 +81,8 @@ function geocodeLatLng(geocoder, map, marker, field) {
   var latlng = {lat: marker.position.lat(), lng: marker.position.lng()};
   geocoder.geocode({'location': latlng}, function(results, status) {
     if (status === 'OK') {
-      if (results[3]) {
-        field.value = results[3].formatted_address;
+      if (results[1]) {
+        field.value = results[1].formatted_address;
       } else {
         window.alert('No results found');
       }

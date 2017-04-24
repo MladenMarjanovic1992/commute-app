@@ -1,7 +1,13 @@
 <header class="text-center">
   <h2>Edit ride for <%= current_user.email %> </h2>
 </header>
-
+<br>
+<br>
 <div class="container">
-  <%= render 'form' %>
+  <div class="col-md-5"><%= render 'form' %></div>
+  <div class="col-md-7">
+    <div id="map"></div>
+    <br>
+    <p>Click on the map to set the starting point and destination for your ride. Double click the marker to remove it.</p>
+  </div>
 </div>

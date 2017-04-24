@@ -6,8 +6,6 @@ class RaterController < ApplicationController
       unless current_user.id == obj.id
         obj.rate params[:score].to_f, current_user, params[:dimension]
         render :json => true
-      else
-        flash.now[:alert] = "You can't rate your own ride"
       end
     else
       render :json => false
