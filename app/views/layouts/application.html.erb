@@ -27,7 +27,7 @@
     
     <%= javascript_include_tag 'application' %>
     <% if request.fullpath == "/users/#{params[:user_id]}/rides/#{params[:id]}" || request.fullpath == "/users/#{params[:user_id]}/rides/new" %>
-      <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAPS_API_KEY'] %>&callback=initMap&libraries=places" type="text/javascript"></script>
+      <%= javascript_include_tag "//maps.google.com/maps/api/js?key=#{ENV['GOOGLE_MAPS_API_KEY']}&callback=initMap&libraries=places" %>
     <% end %>
   </body>
   

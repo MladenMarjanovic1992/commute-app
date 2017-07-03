@@ -37,7 +37,9 @@
   </div>
   
   <div class="col-md-6" id="driver-add-ride">
-    <%= link_to "Add ride", new_user_ride_path(@driver), class: 'btn btn-primary btn-block' %>
+    <% if @driver == current_user %>
+      <%= link_to "Add ride", new_user_ride_path(@driver), class: 'btn btn-primary btn-block' %>
+    <% end %>
   </div>
   <div class="col-md-6">
       <% @rides.each do |ride| %>
